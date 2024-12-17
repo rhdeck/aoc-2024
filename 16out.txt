@@ -1,0 +1,5 @@
+Lowest cost path: 90460 points
+Number of optimal paths: 480
+Number of unique positions covered by optimal paths: 575
+
+Visualization saved as '16.png'
