@@ -1,5 +1,7 @@
 import sys
 import datetime
+import itertools
+from sympy.utilities.iterables import multiset_permutations
 
 
 small_keypad = [
@@ -14,34 +16,74 @@ large_keypad = [
     ['#', '0', 'A']
 ]
 
-small_keypad_transitions = {
-    ('^', '>'): ['v', '>', 'A'],#
-    ('^', '<'): ['v', '<', 'A'],#
-    ('^', 'v'): [ 'v', 'A'],#
-    ('^', 'A'): ['>', 'A'],
-    ('^', '^'): [ 'A'],#
-    ('v', '>'): ['>', 'A'],#
-    ('v', '<'): ['<', 'A'],#
-    ('v', 'v'): [ 'A'],#
-    ('v', 'A'): ['^', '>','A'],#
-    ('v', '^'): [ '^','A'],#
-    ('<', '>'): ['>', '>', 'A'],
-    ('<', '<'): [ 'A'],
-    ('<', 'v'): ['>', 'A'],
-    ('<', 'A'): ['>','>' , '^', 'A'],
-    ('<', '^'): [ '>', '^', 'A'],
-    ('>', '>'): [ 'A'],#
-    ('>', '<'): [ '<', '<', 'A'],
-    ('>', 'v'): ['<', 'A'],
-    ('>', 'A'): ['^', 'A'],
-    ('>', '^'): [ '<', '^', 'A'],
-    ('A', '>'): ['v', 'A'],
-    ('A', '<'): ['v', '<', '<', 'A'],
-    ('A', 'v'): ['v', '<', 'A'],
-    ('A', 'A'): [ 'A'],#
-    ('A', '^'): ['<', 'A'],#
-
+small_keypad_results = {
+    "^": (-1, 0),
+    "v": (1, 0),
+    "<": (0, -1),
+    ">": (0, 1),
+    "A": (0, 0)
 }
+
+def get_value_from_large_keypad(position):
+    return large_keypad[position[1]][position[0]]
+
+def test_keypad_path(origin_value, path, destination):
+    # get coordinates of the origin value form the large_keypad
+    # print("Origin value:", origin_value)
+    origin_pos = None
+    for y, row in enumerate(large_keypad):
+        # print(y, row)
+        for x, value in enumerate(row):
+            # print(x, y, value)
+            if value == origin_value:
+                origin_pos = (x, y)
+                break
+    print("Origin position:", origin_pos)
+    for move in path:
+        if move == "^":
+            origin_pos = (origin_pos[0], origin_pos[1] - 1)
+        elif move == "v":
+            origin_pos = (origin_pos[0], origin_pos[1] + 1)
+        elif move == "<":
+            origin_pos = (origin_pos[0] - 1, origin_pos[1])
+        elif move == ">":
+            origin_pos = (origin_pos[0] + 1, origin_pos[1])
+        elif move == "A":
+            origin_pos = (origin_pos[0], origin_pos[1])
+        if origin_pos[0] < 0 or origin_pos[0] >= len(large_keypad[0]) or origin_pos[1] < 0 or origin_pos[1] >= len(large_keypad):
+            return False
+        temp_value = get_value_from_large_keypad(origin_pos)
+        if temp_value == '#':
+            return False
+    return True
+    # print("Destination value:", destination)
+    # print("Origin position:", origin_pos)
+    # print("Destination position:", destination)
+
+def test_small_keypad_path(origin_value, path, destination):
+    origin_pos = None
+    for y, row in enumerate(small_keypad):
+        for x, value in enumerate(row):
+            if value == origin_value:
+                origin_pos = (x, y)
+                break
+    for move in path:
+        if move == "^":
+            origin_pos = (origin_pos[0], origin_pos[1] - 1)
+        elif move == "v":
+            origin_pos = (origin_pos[0], origin_pos[1] + 1)
+        elif move == "<":
+            origin_pos = (origin_pos[0] - 1, origin_pos[1])
+        elif move == ">":
+            origin_pos = (origin_pos[0] + 1, origin_pos[1])
+        elif move == "A":
+            origin_pos = (origin_pos[0], origin_pos[1])
+        if origin_pos[0] < 0 or origin_pos[0] >= len(small_keypad[0]) or origin_pos[1] < 0 or origin_pos[1] >= len(small_keypad):
+            return False
+        temp_value = small_keypad[origin_pos[1]][origin_pos[0]]
+        if temp_value == '#':
+            return False
+    return True
 
 small_keypad_transitions_no_A = {
     ('^', '>'): ['>', 'v'],
@@ -70,6 +112,34 @@ small_keypad_transitions_no_A = {
     ('A', 'A'): [],
     ('A', '^'): ['<']
 }
+
+# bad_small_keypad_transitions_no_A = {
+#     ('^', '>'): [],
+#     ('^', '<'): [['<', 'v']],
+#     ('^', 'v'): [],
+#     ('^', 'A'): [],
+#     ('^', '^'): [],
+#     ('v', '>'): [],
+#     ('v', '<'): [],
+#     ('v', 'v'): [],
+#     ('v', 'A'): [],
+#     ('v', '^'): [],
+#     ('<', '>'): [],
+#     ('<', '<'): [],
+#     ('<', 'v'): [],
+#     ('<', 'A'): [['^', '>', '>' ]],
+#     ('<', '^'): [['^', '>']],
+#     ('>', '>'): [],
+#     ('>', '<'): [],
+#     ('>', 'v'): [],
+#     ('>', 'A'): [],
+#     ('>', '^'): [],
+#     ('A', '>'): [],
+#     ('A', '<'): [['<', '<','v' ]],
+#     ('A', 'v'): [],
+#     ('A', 'A'): [],
+#     ('A', '^'): []
+# }
 
 large_keypad_transitions = {
     # From 0
@@ -107,7 +177,7 @@ large_keypad_transitions = {
     ('2', '6'): ['^', '>'],
     ('2', '7'): ['^', '^', '<'],
     ('2', '8'): ['^', '^'],
-    ('2', '9'): ['^', '^', '>'],
+    ('2', '9'): ['>', '^', '^'],
     ('2', 'A'): ['v', '>'],
     ('2', '2'): [],
     # From 3
@@ -209,282 +279,12 @@ large_keypad_transitions = {
     ('A', '5'): ['^', '^', '<'],
     ('A', '6'): ['^', '^'],
     ('A', '7'): ['^', '^', '^', '<', '<'],
-    ('A', '8'): ['^', '^', '^', '<'],
+    ('A', '8'): [ '^', '^', '^', '<'],
     ('A', '9'): ['^', '^', '^']
 }
 
 small_pad_controls = ['A', '^', 'v', '<', '>']
 large_pad_controls = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A']
-
-def make_controls_for_controls():
-    for i in small_pad_controls:
-        for j in small_pad_controls:
-            print(i,j,small_keypad_transitions[(i, j)])
-
-def make_controls_for_sequence(sequence):
-    return [small_keypad_transitions[(c1, c2)] for c1, c2 in zip(sequence[:-1], sequence[1:])]
-
-def test(chain_length=2):
-
-    controls_store = {}
-    controls_lists = {}
-    # steps = []
-    for i in small_pad_controls:
-        for j in small_pad_controls:
-            controls_store[(i, j)] = 1
-            controls_lists[(i, j)] = []
-    for i in controls_store:
-        print(i, controls_store[i])
-
-    for c in range(chain_length):
-        for i in small_pad_controls:
-            for j in small_pad_controls:
-                transition = small_keypad_transitions[(i, j)]
-                new_store = {}
-                previous = 'A'
-                # current_count = 0
-                # counts = []
-                for step in transition:
-                    print("Step is", step)
-                    # counts.append(len())
-                    # current_count = current_count + 1
-                    print("Adding transition from", previous, "to", step)
-                    newSteps = small_keypad_transitions[(previous, step)]
-                    # steps.extend(newSteps)
-                    controls_store[(previous, step)] = controls_store[(previous, step)] + len(newSteps)
-                    controls_lists[(previous, step)].extend(newSteps)
-                    previous = step
-                # controls_store[(i, j)] = controls_store[(i, j)] * len(small_keypad_transitions[('A', j)])
-                # controls_lists[(i, j)].extend(small_keypad_transitions[('A', j)])
-    # for i in small_pad_controls:
-    #         for j in small_pad_controls:
-    #             controls_store[(i, j)] = controls_store[(i, j)] * len(small_keypad_transitions[('A', j)])
-    #             controls_lists[(i, j)].extend(small_keypad_transitions[('A', j)])
-
-    sequence = '971A'
-    counter = 0
-    for i in sequence:
-
-        pattern = large_keypad_transitions[(previous, i)]
-        print("Pattern from ", previous, "to", i, "is", pattern)
-        previous = 'A'
-        for j in pattern:
-            print("moving to", j)
-            counter = counter + controls_store[(previous, j)]
-            print("counter is now", counter, controls_lists[(previous, j)])
-            # controls_lists[('A', j)].append(j)
-        previous = i
-    print(controls_store)
-    # for i in controls_lists.keys():
-    #         print(i, controls_lists[i])
-    print("Final score", counter)
-
-def test2(chain_length=2):
-    control_cache = {}
-    for j in small_pad_controls:
-        for k in small_pad_controls:
-            control_cache[(j, k)] = 1
-    for c in range(chain_length):
-        for j in small_pad_controls:
-            for k in small_pad_controls:
-                control_cache[(j, k)] = control_cache[(j, k)] * len(small_keypad_transitions[(j, k)])
-    for c in control_cache:
-        print(c, control_cache[c])
-
-def test3(chain_length):
-    """
-    Uses dynamic programming to find the minimum number of keypresses needed
-    for each possible target key on a chain of keypads. All pads start at 'A'
-    position, and we need to navigate from there to execute commands.
-    Each pad needs to be positioned correctly to affect the pads below it.
-    """
-    # Initialize dp table: dp[step][target][curr_pos] represents min keypresses 
-    # to achieve target on pad 'step' with current pad at curr_pos
-    positions = ['^', 'v', '<', '>', 'A']
-    dp = {}
-    
-    # Base case: step 1 (first pad)
-    for target in positions:
-        for curr_pos in positions:
-            dp[(1, target, curr_pos)] = float('inf')
-        # Cost to move from A to target directly
-        if ('A', target) in small_keypad_transitions:
-            dp[(1, target, target)] = len(small_keypad_transitions[('A', target)])
-        elif target == 'A':
-            dp[(1, 'A', 'A')] = 0
-    
-    # For each pad in the chain
-    for step in range(2, chain_length + 1):
-        for target in positions:
-            for curr_pos in positions:
-                min_presses = float('inf')
-                
-                # To reach target on pad 'step':
-                # 1. Previous pad (step-1) must be at the target position
-                # 2. Current pad must navigate to 'A' to activate previous pad
-                
-                # First, get cost to position previous pad
-                prev_cost = dp[(step-1, target, target)]
-                
-                if prev_cost != float('inf'):
-                    # Now add cost to get current pad to 'A' from its position
-                    if curr_pos == 'A':
-                        # Already at A, just need to press it
-                        total_cost = prev_cost + 1
-                    elif ('A', curr_pos) in small_keypad_transitions:
-                        # Need to navigate to A first, then press it
-                        nav_cost = len(small_keypad_transitions[('A', curr_pos)])
-                        total_cost = prev_cost + nav_cost + 1
-                    
-                    min_presses = min(min_presses, total_cost)
-                
-                dp[(step, target, curr_pos)] = min_presses
-    
-    # Print results for the final step
-    print(f"\nResults for chain length {chain_length}:")
-    for pos in positions:
-        min_presses = float('inf')
-        for curr_pos in positions:
-            min_presses = min(min_presses, dp[(chain_length, pos, curr_pos)])
-        print(f"Minimum keypresses to reach '{pos}' on pad {chain_length}: {min_presses}")
-        
-        # Show example sequence for this position
-        if pos == '<':
-            print(f"\nExample sequence to reach '<' on pad {chain_length}:")
-            print(f"1. Navigate pad {chain_length-1} from A to < (v,<,< = 3 presses)")
-            print(f"2. Navigate pad {chain_length-2} to A and press it (1 press)")
-            print(f"3. Navigate pad {chain_length-3} to A and press it (1 press)")
-            print(f"Total: at least {3 + (chain_length-2)} presses")
-    
-    return dp
-
-def test4(chain_length=2, test_sequence='971A'):
-    print("building command caches...")
-    command_caches = {}
-
-    command_chains = {}
-    for command in small_pad_controls:
-        command_chains[command] = []
-    for command in small_pad_controls:
-        command_caches[command] = 1
-        command_chains[command] = [command]
-    print("command caches built", command_caches)
-    print("Chain length is:", chain_length)
-    previous_chain = None
-    for i in range(1, chain_length):
-        
-        new_command_chains = {}
-        for command in small_pad_controls:
-            new_command_chains[command] = []
-        # for command in small_pad_controls:
-        #     new_command_chains[command] = []
-        print(f"Looking at keypad {i+1}:")
-       
-        for command in small_pad_controls:
-            print("Working on small pad control", command)
-            # look at the cost to go from one command to another
-            commands = small_keypad_transitions_no_A[('A', command)]
-            print("Commands from", 'A', "to", command, "are", commands)
-            command_caches[command] = command_caches[command] * len(commands)
-            previous = 'A'
-            for subcommand in commands:
-
-                # print("Adding command_chains to new_command_chains", command_chains[command], new_command_chains[subcommand])
-                new_command_chains[command] = new_command_chains[command] + command_chains[subcommand]
-                previous = command
-                # if(previous_chain is not None):
-                    # path_to_a = small_keypad_transitions[(new_command_chains[command][-1], 'A')]
-                    # new_command_chains[command].extend(path_to_a)
-                # else:
-                # new_command_chains[command].append('A')
-            # a_commands = small_keypad_transitions_no_A[(command, 'A')]
-            # for subcommand in a_commands:
-            #     # print("Adding command_chains to new_command_chains", command_chains[command], new_command_chains[subcommand])
-            #     new_command_chains[command] = new_command_chains[command] + command_chains[subcommand]
-            # previous = command
-            new_command_chains[command] = new_command_chains[command] + ["A"]
-        previous_chain = command_chains
-        command_chains = new_command_chains
-        previous = 'A'
-        print("After keypad", i+1, "command chains look like:")
-        for command in command_chains:
-            print(f"{command}: {''.join(command_chains[command])} {command_chains[command]}")
-    print("Before the last keypad, chains look like:")
-    for command in command_chains:
-        print(f"{command}: {command_chains[command]}")
-    return
-    if(chain_length > 0):
-        previous = 'A'
-        new_command_chains = {}
-        for command in small_pad_controls:
-            new_command_chains[command] = []
-        for command in small_pad_controls:
-            print("Working on small pad control", command)
-            # look at the cost to go from one command to another
-            commands = small_keypad_transitions[(previous, command)]
-            print("Commands from", previous, "to", command, "are", commands)
-            command_caches[command] = command_caches[command] * len(commands)
-            for subcommand in commands:
-                print("Adding command_chains to new_command_chains", command_chains[command], new_command_chains[subcommand])
-                new_command_chains[command] = new_command_chains[command] + command_chains[subcommand]
-            previous = command
-            # a_commands = small_keypad_transitions[(command, 'A')]
-            # for subcommand in a_commands:
-            #     print("Adding command_chains to new_command_chains", command_chains[command], new_command_chains[subcommand])
-            #     new_command_chains[command] = new_command_chains[command] + command_chains[subcommand]
-            # previous = command
-            
-        command_chains = new_command_chains
-        previous = 'A'
-
-
-    print("Command chains at the end of the build:")
-    for command in command_chains:
-        print(f"{command}: {command_chains[command]}")
-    previous = 'A'
-
-    # for command in small_pad_controls:
-    #     # look at the cost to go from one command to another
-    #     commands = small_keypad_transitions_no_A[(previous, command)]
-    #     print(f"Commands from {previous} to {command}: {commands}")
-    #     command_caches[command] = command_caches[command] * len(commands)
-    #     previous = command
-    previous_position = 'A'
-    total = 0
-    command_string = []
-    for item in test_sequence:
-
-        print(item)
-        needed_commands = large_keypad_transitions[(previous_position, item)]
-        # needed_commands.append('A')
-        print(f"Commands needed to get from {previous_position} to {item}: {needed_commands}")
-        for command in needed_commands:
-
-            print(f"Command: {command}")
-            print(f"Cost: {command_caches[command]}")
-            command_string.extend(command_chains[command])
-            total += command_caches[command]
-        back_to_a = small_keypad_transitions_no_A[(needed_commands[-1], 'A')]
-        for command in back_to_a:
-            print(f"Command: {command}")
-            print(f"Cost: {command_caches[command]}")
-            command_string.extend(command_chains[command])
-            total += command_caches[command]
-        # command_string.extend(command_chains['A'])
-        total += command_caches['A']
-        previous_position = item
-    print("Total commands needed:", total)
-    print("Command string array:", command_string)
-    print("Command string:", ''.join(command_string))
-    print("Final command caches:")
-    for command in command_chains:
-        print(f"{command}: {command_chains[command]}")
-    # print("Total commands needed:", sum(command_caches.values()))
-    # chain_length = 4
-    # total = calculate_sequence_keypresses(test_sequence, chain_length, optimal_paths)
-    # print(f"\nTo input sequence {test_sequence} with chain length {chain_length}:")
-    # print(f"Total keypresses needed: {total}")
-
 
 
 
@@ -492,23 +292,74 @@ def make_chains_for_level(previous_chains = None, scoreMode = False):
     if previous_chains is None:
         previous_chains = {}
     new_chains = {}
+    used_combos = {}
     for source in small_pad_controls:
         for target in small_pad_controls:
+            # print("Working on small pad control", source, "to", target)
             if scoreMode == True:
                 new_chains[(source, target)] = 0
             else:
                 new_chains[(source, target)] = []
-            previous = 'A'
-            for step in small_keypad_transitions_no_A[(source, target)]:
-                if scoreMode == True:
-                    new_chains[(source, target)] = new_chains.get((source, target), 0) + previous_chains.get((previous, step), 1)
-                else:
-                    new_chains[(source, target)] = new_chains.get((source, target), []) + previous_chains.get((previous, step), [step])
-                # print("Analyzed chain from", source, "to", target, "from step", step, ''.join(new_chains[(source, target)]))
+           
+            # Test all possible sequences of transition ot see which one is the shortest
+            shortest_path = None
+            combos = multiset_permutations(small_keypad_transitions_no_A[(source, target)])
+                # print("Testing transition from", combo[0], "to", combo[1]
+            combolist = list(combos)
+            print("Testing my combos for", source, "to", target, ":", combolist)
+            # combolist = [small_keypad_transitions_no_A[(source, target)]]
 
-                previous = step
+            for combo in combolist:
+                print("testing combo", combo, "from",small_keypad_transitions_no_A[(source, target)] )  
+                isbadcombo = False
+                if not test_small_keypad_path(source, combo, target):
+                    print("Bad transition from", source, "to", target, "from",combo)
+                    isbadcombo = True 
+                    print("Skipping bad transition", combo, "for",small_keypad_transitions_no_A[(source, target)])
+                    continue
+                else:
+                    print("Found good transition", combo, "for",small_keypad_transitions_no_A[(source, target)])
+                if(scoreMode == True):
+                    temp_path = 0
+                else:
+                    temp_path = []
+                previous = 'A'
+                for step in combo:
+                    print("Looking at combo step", step)
+                    if scoreMode == True:
+                        # print("Lookging at ", (source, target), "new_chains value is", new_chains.get((source, target),0), "previous chains value is", previous_chains.get((previous, step), 1))
+                        temp_path = temp_path + previous_chains.get((previous, step), 1)
+                    else:
+                        # print("Lookging at ", (source, target), "new_chains value is", new_chains.get((source, target),0), "previous chains value is", previous_chains.get((previous, step), 1))
+                        temp_path = temp_path + previous_chains.get((previous, step), [step])
+                    # print("Analyzed chain from", source, "to", target, "from step", step, ''.join(new_chains[(source, target)]))
+                    previous = step
+                
+                if scoreMode == True:
+                    print("SCORE Temp path is", temp_path)
+                    if shortest_path == None or temp_path < shortest_path:
+                        print("New shortest path is", temp_path)
+                        shortest_path = temp_path
+                        used_combos[(source, target)] = combo
+                else:
+                    print("LIST Temp path is", ''.join(temp_path))
+                    if shortest_path == None or len(temp_path) < len(shortest_path):
+                        print("New shortest path is", ''.join(temp_path))
+                        shortest_path = temp_path
+                        used_combos[(source, target)] = combo
+            if shortest_path != None:
+                new_chains[(source, target)] = shortest_path 
+            elif scoreMode == True:
+                new_chains[(source, target)] = 0
+            else:
+                new_chains[(source, target)] = new_chains.get((source, target), [])
+            if scoreMode == True:
+                print("New chain from", source, "to", target, "is", new_chains[(source, target)])
+            else:
+                print("New chain from", source, "to", target, "is", len(new_chains[(source, target)]))
             # new_chains[(source, target)] = new_chains.get((source, target), []) + ['A']
-    return new_chains
+            # new_chains[(source, target)] = temp_path
+    return new_chains, used_combos
 
 def make_transition_chains(chain_length, scoreMode = False):
     previous_chain = None
@@ -519,15 +370,36 @@ def make_transition_chains(chain_length, scoreMode = False):
         print(f"Current time: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S %Z')}")
         print(f"Looking at keypad {i+1}:")
         old_chain = saving_chain.copy() if saving_chain != None else None
-        previous_chain = make_chains_for_level(saving_chain, scoreMode)
+        # if saving_chain == None:
+        #     print("Saving chain is None")
+        # else:
+        #     print("Saving chain is not None")
+        #     for command in saving_chain:
+        #         if(scoreMode == True):
+        #             print(f"{command}: {saving_chain[command]}")
+        #         else:   
+        #             print(f"{command}: {''.join(saving_chain[command])}")
+        #     print("----------------------")
+        previous_chain, used_combos = make_chains_for_level(saving_chain, scoreMode)
         saving_chain = previous_chain.copy()
+        # if saving_chain == None:
+        #     print("After: saving_chain is None")
+        # else:
+        #     print("After: saving_chain is not None")
+        #     for command in saving_chain:
+        #         if(scoreMode == True):
+        #             print(f"{command}: {saving_chain[command]}")
+        #         else:   
+        #             print(f"{command}: {''.join(saving_chain[command])}")
+        #     print("----------------------")
         # print("Saving chain", i+1, "is:")
         for command in saving_chain:
             # print(f"{command}: {''.join(saving_chain[command])}")
-            saving_chain_value = saving_chain[command]
-            og_command = small_keypad_transitions_no_A[command]
+            # saving_chain_value = saving_chain[command]
+            if command not in used_combos: print("ERROR Og command is NOT found?", command, command in used_combos)
+            og_command = used_combos[command] # if command in used_combos else small_keypad_transitions_no_A[command]
             # print("Appending to chain from old_chains", command,"->", saving_chain_value)
-            if saving_chain_value == []:
+            if saving_chain[command] == [] or saving_chain[command] == 0:
                 if scoreMode == True:
                     saving_chain[command] = saving_chain[command]  + 1
                 else:
@@ -536,12 +408,12 @@ def make_transition_chains(chain_length, scoreMode = False):
                 pass
             else:
                 if old_chain == None:
-                    print("old_chain is None, just appending an A", command, saving_chain[command])
+                    # print("old_chain is None, just appending an A", command, saving_chain[command])
                     if scoreMode == True:
                         saving_chain[command] = saving_chain[command]  + 1
                     else:
                         saving_chain[command] = saving_chain[command]  + ['A']
-                    print("old_chain is None, just appended an A", command, saving_chain[command])
+                    # print("old_chain is None, just appended an A", command, saving_chain[command])
                 else:
                     # print("old_chain is not None, appending back_to_a", ''.join(old_chain.get((saving_chain_value[-2], 'A'))))
                     # if saving_chain_value[-2] == 'A':
@@ -571,13 +443,14 @@ def make_transition_chains(chain_length, scoreMode = False):
 
         end = datetime.datetime.now()
         print(f"Finished keypad {i+1} in {end-start}")
-        for i in range(len(chains)):
-            print("After keypad", i+1, "command chains look like:")
-            for command in chains[i]:
-                if(scoreMode == True):
-                    print(f"{command}: {chains[i][command]}")
-                else:
-                    print(f"{command}: {''.join(chains[i][command])} ")
+        # for i in range(len(chains)):
+        print("After keypad", i+1, "command chains look like:")
+        for command in chains[i]:
+            if(scoreMode == True):
+                print(f"{command}: {chains[i][command]}")
+            else:
+                print(f"{command}: {len(chains[i][command])}")
+                # print(f"{command}: {len(chains[i][command])} {''.join(chains[i][command])} ")
     # print("Before the last keypad, chains look like:")
     # for command in previous_chain:
     #     print(f"{command}: {''.join(previous_chain[command])} ")
@@ -598,7 +471,68 @@ if __name__ == "__main__":
         if(scoreMode == True):
             print(f"{command}: {saving_chain[command]}")
         else:
-            print(f"{command}: {len(saving_chain[command])} - {''.join(saving_chain[command])} ")
+            print(f"{command}: {len(saving_chain[command])}  ")
+
+
+
+    print("===============")
+    sequence = test_sequence
+    if scoreMode == False:
+        counter = []
+    else:
+        counter = 0
+    previous = 'A'
+    for i in sequence:
+        print("Trying to move from", previous, "to", i)
+        og_pattern = large_keypad_transitions[(previous, i)]
+        combos = multiset_permutations(og_pattern)
+        combolist = list(combos)
+       
+        mincounter = None
+        sub_previous = previous
+        # combolist = [og_pattern]
+        for pattern in combolist:
+            tempcounter = counter
+            print("Trying pattern", pattern)
+            if not test_keypad_path(previous,pattern, i):
+                print("Pattern ", pattern, "from ", previous, "to", i, "is not valid")
+                continue
+
+            print("Pattern from ", previous, "to", i, "is", pattern)
+            sub_previous = 'A'
+            for j in pattern:
+                print("moving from", sub_previous, " to", j)
+                tempcounter = tempcounter + saving_chain[(sub_previous, j)]
+                if scoreMode == False:
+                    print("after moving to", j, "counter is now", len(tempcounter), ''.join(tempcounter))
+                else:
+                    print("after moving to", j, "counter is now", tempcounter)
+                # controls_lists[('A', j)].append(j)
+                sub_previous = j
+           
+            tempcounter = tempcounter + saving_chain[(sub_previous, 'A')]
+            # print("after moving to A, counter is now", tempcounter, "from pattern", pattern)
+            if scoreMode == True:
+                if mincounter == None or tempcounter < mincounter:
+                    mincounter = tempcounter
+            else:
+                if mincounter == None or len(tempcounter) < len(mincounter):
+                    mincounter = tempcounter
+        # print("Done with looking at my patterns for", previous, "to", i, mincounter)
+        if(mincounter == None):
+            print("No valid patterns found for", previous, "to", i)
+            break
+        if scoreMode == True:
+            counter = mincounter
+        else:
+            counter = mincounter
+       
+        previous = i
+    if scoreMode == False:
+        print("After all is done, final length is", len(counter) ,":",  ''.join(counter))
+    else:
+        print("After all is done, final length is", counter)
+            # print(f"{command}: {len(saving_chain[command])} - {''.join(saving_chain[command])} ")
         # print(f"{command}: {saving_chain[command]} ")
     # previous = 'A'
     # for item in test_sequence:

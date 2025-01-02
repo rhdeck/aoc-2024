@@ -378,6 +378,7 @@ def visualize_keypads(robot_positions, large_robot_pos):
 def interactive_simulator(chain_length=2, instructions=None):
     import curses
     import time
+    instruction_length = 0 if instructions is None else len(instructions)
     if instructions is not None : instructions = deque(instructions)
     pressed_commands = []
     def main(stdscr):
@@ -467,7 +468,7 @@ def interactive_simulator(chain_length=2, instructions=None):
             if interactive_mode: time.sleep(0.1)  # Small delay to make visualization smoother
             else: 
                 stdscr.refresh()
-                time.sleep(0.2)
+                time.sleep(max(0.02, 5/instruction_length))
     curses.wrapper(main)
 
 def find_path_to_single_key(start_state, target_key, transition_table):

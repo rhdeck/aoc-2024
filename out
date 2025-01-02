@@ -1,0 +1,1581 @@
+Current time: 2025-01-01 20:51:25 
+Looking at keypad 1:
+Testing my combos for A to A : [[]]
+testing combo [] from []
+Found good transition [] for []
+SCORE Temp path is 0
+New shortest path is 0
+New chain from A to A is 0
+Testing my combos for A to ^ : [['<']]
+testing combo ['<'] from ['<']
+Found good transition ['<'] for ['<']
+Looking at combo step <
+SCORE Temp path is 1
+New shortest path is 1
+New chain from A to ^ is 1
+Testing my combos for A to v : [['<', 'v'], ['v', '<']]
+testing combo ['<', 'v'] from ['v', '<']
+Found good transition ['<', 'v'] for ['v', '<']
+Looking at combo step <
+Looking at combo step v
+SCORE Temp path is 2
+New shortest path is 2
+testing combo ['v', '<'] from ['v', '<']
+Found good transition ['v', '<'] for ['v', '<']
+Looking at combo step v
+Looking at combo step <
+SCORE Temp path is 2
+New chain from A to v is 2
+Testing my combos for A to < : [['<', '<', 'v'], ['<', 'v', '<'], ['v', '<', '<']]
+testing combo ['<', '<', 'v'] from ['v', '<', '<']
+Bad transition from A to < from ['<', '<', 'v']
+Skipping bad transition ['<', '<', 'v'] for ['v', '<', '<']
+testing combo ['<', 'v', '<'] from ['v', '<', '<']
+Found good transition ['<', 'v', '<'] for ['v', '<', '<']
+Looking at combo step <
+Looking at combo step v
+Looking at combo step <
+SCORE Temp path is 3
+New shortest path is 3
+testing combo ['v', '<', '<'] from ['v', '<', '<']
+Found good transition ['v', '<', '<'] for ['v', '<', '<']
+Looking at combo step v
+Looking at combo step <
+Looking at combo step <
+SCORE Temp path is 3
+New chain from A to < is 3
+Testing my combos for A to > : [['v']]
+testing combo ['v'] from ['v']
+Found good transition ['v'] for ['v']
+Looking at combo step v
+SCORE Temp path is 1
+New shortest path is 1
+New chain from A to > is 1
+Testing my combos for ^ to A : [['>']]
+testing combo ['>'] from ['>']
+Found good transition ['>'] for ['>']
+Looking at combo step >
+SCORE Temp path is 1
+New shortest path is 1
+New chain from ^ to A is 1
+Testing my combos for ^ to ^ : [[]]
+testing combo [] from []
+Found good transition [] for []
+SCORE Temp path is 0
+New shortest path is 0
+New chain from ^ to ^ is 0
+Testing my combos for ^ to v : [['v']]
+testing combo ['v'] from ['v']
+Found good transition ['v'] for ['v']
+Looking at combo step v
+SCORE Temp path is 1
+New shortest path is 1
+New chain from ^ to v is 1
+Testing my combos for ^ to < : [['<', 'v'], ['v', '<']]
+testing combo ['<', 'v'] from ['v', '<']
+Bad transition from ^ to < from ['<', 'v']
+Skipping bad transition ['<', 'v'] for ['v', '<']
+testing combo ['v', '<'] from ['v', '<']
+Found good transition ['v', '<'] for ['v', '<']
+Looking at combo step v
+Looking at combo step <
+SCORE Temp path is 2
+New shortest path is 2
+New chain from ^ to < is 2
+Testing my combos for ^ to > : [['>', 'v'], ['v', '>']]
+testing combo ['>', 'v'] from ['>', 'v']
+Found good transition ['>', 'v'] for ['>', 'v']
+Looking at combo step >
+Looking at combo step v
+SCORE Temp path is 2
+New shortest path is 2
+testing combo ['v', '>'] from ['>', 'v']
+Found good transition ['v', '>'] for ['>', 'v']
+Looking at combo step v
+Looking at combo step >
+SCORE Temp path is 2
+New chain from ^ to > is 2
+Testing my combos for v to A : [['>', '^'], ['^', '>']]
+testing combo ['>', '^'] from ['^', '>']
+Found good transition ['>', '^'] for ['^', '>']
+Looking at combo step >
+Looking at combo step ^
+SCORE Temp path is 2
+New shortest path is 2
+testing combo ['^', '>'] from ['^', '>']
+Found good transition ['^', '>'] for ['^', '>']
+Looking at combo step ^
+Looking at combo step >
+SCORE Temp path is 2
+New chain from v to A is 2
+Testing my combos for v to ^ : [['^']]
+testing combo ['^'] from ['^']
+Found good transition ['^'] for ['^']
+Looking at combo step ^
+SCORE Temp path is 1
+New shortest path is 1
+New chain from v to ^ is 1
+Testing my combos for v to v : [[]]
+testing combo [] from []
+Found good transition [] for []
+SCORE Temp path is 0
+New shortest path is 0
+New chain from v to v is 0
+Testing my combos for v to < : [['<']]
+testing combo ['<'] from ['<']
+Found good transition ['<'] for ['<']
+Looking at combo step <
+SCORE Temp path is 1
+New shortest path is 1
+New chain from v to < is 1
+Testing my combos for v to > : [['>']]
+testing combo ['>'] from ['>']
+Found good transition ['>'] for ['>']
+Looking at combo step >
+SCORE Temp path is 1
+New shortest path is 1
+New chain from v to > is 1
+Testing my combos for < to A : [['>', '>', '^'], ['>', '^', '>'], ['^', '>', '>']]
+testing combo ['>', '>', '^'] from ['>', '>', '^']
+Found good transition ['>', '>', '^'] for ['>', '>', '^']
+Looking at combo step >
+Looking at combo step >
+Looking at combo step ^
+SCORE Temp path is 3
+New shortest path is 3
+testing combo ['>', '^', '>'] from ['>', '>', '^']
+Found good transition ['>', '^', '>'] for ['>', '>', '^']
+Looking at combo step >
+Looking at combo step ^
+Looking at combo step >
+SCORE Temp path is 3
+testing combo ['^', '>', '>'] from ['>', '>', '^']
+Bad transition from < to A from ['^', '>', '>']
+Skipping bad transition ['^', '>', '>'] for ['>', '>', '^']
+New chain from < to A is 3
+Testing my combos for < to ^ : [['>', '^'], ['^', '>']]
+testing combo ['>', '^'] from ['>', '^']
+Found good transition ['>', '^'] for ['>', '^']
+Looking at combo step >
+Looking at combo step ^
+SCORE Temp path is 2
+New shortest path is 2
+testing combo ['^', '>'] from ['>', '^']
+Bad transition from < to ^ from ['^', '>']
+Skipping bad transition ['^', '>'] for ['>', '^']
+New chain from < to ^ is 2
+Testing my combos for < to v : [['>']]
+testing combo ['>'] from ['>']
+Found good transition ['>'] for ['>']
+Looking at combo step >
+SCORE Temp path is 1
+New shortest path is 1
+New chain from < to v is 1
+Testing my combos for < to < : [[]]
+testing combo [] from []
+Found good transition [] for []
+SCORE Temp path is 0
+New shortest path is 0
+New chain from < to < is 0
+Testing my combos for < to > : [['>', '>']]
+testing combo ['>', '>'] from ['>', '>']
+Found good transition ['>', '>'] for ['>', '>']
+Looking at combo step >
+Looking at combo step >
+SCORE Temp path is 2
+New shortest path is 2
+New chain from < to > is 2
+Testing my combos for > to A : [['^']]
+testing combo ['^'] from ['^']
+Found good transition ['^'] for ['^']
+Looking at combo step ^
+SCORE Temp path is 1
+New shortest path is 1
+New chain from > to A is 1
+Testing my combos for > to ^ : [['<', '^'], ['^', '<']]
+testing combo ['<', '^'] from ['<', '^']
+Found good transition ['<', '^'] for ['<', '^']
+Looking at combo step <
+Looking at combo step ^
+SCORE Temp path is 2
+New shortest path is 2
+testing combo ['^', '<'] from ['<', '^']
+Found good transition ['^', '<'] for ['<', '^']
+Looking at combo step ^
+Looking at combo step <
+SCORE Temp path is 2
+New chain from > to ^ is 2
+Testing my combos for > to v : [['<']]
+testing combo ['<'] from ['<']
+Found good transition ['<'] for ['<']
+Looking at combo step <
+SCORE Temp path is 1
+New shortest path is 1
+New chain from > to v is 1
+Testing my combos for > to < : [['<', '<']]
+testing combo ['<', '<'] from ['<', '<']
+Found good transition ['<', '<'] for ['<', '<']
+Looking at combo step <
+Looking at combo step <
+SCORE Temp path is 2
+New shortest path is 2
+New chain from > to < is 2
+Testing my combos for > to > : [[]]
+testing combo [] from []
+Found good transition [] for []
+SCORE Temp path is 0
+New shortest path is 0
+New chain from > to > is 0
+Finished keypad 1 in 0:00:00.000340
+After keypad 1 command chains look like:
+('A', 'A'): 1
+('A', '^'): 2
+('A', 'v'): 3
+('A', '<'): 4
+('A', '>'): 2
+('^', 'A'): 2
+('^', '^'): 1
+('^', 'v'): 2
+('^', '<'): 3
+('^', '>'): 3
+('v', 'A'): 3
+('v', '^'): 2
+('v', 'v'): 1
+('v', '<'): 2
+('v', '>'): 2
+('<', 'A'): 4
+('<', '^'): 3
+('<', 'v'): 2
+('<', '<'): 1
+('<', '>'): 3
+('>', 'A'): 2
+('>', '^'): 3
+('>', 'v'): 2
+('>', '<'): 3
+('>', '>'): 1
+Current time: 2025-01-01 20:51:25 
+Looking at keypad 2:
+Testing my combos for A to A : [[]]
+testing combo [] from []
+Found good transition [] for []
+SCORE Temp path is 0
+New shortest path is 0
+New chain from A to A is 0
+Testing my combos for A to ^ : [['<']]
+testing combo ['<'] from ['<']
+Found good transition ['<'] for ['<']
+Looking at combo step <
+SCORE Temp path is 4
+New shortest path is 4
+New chain from A to ^ is 4
+Testing my combos for A to v : [['<', 'v'], ['v', '<']]
+testing combo ['<', 'v'] from ['v', '<']
+Found good transition ['<', 'v'] for ['v', '<']
+Looking at combo step <
+Looking at combo step v
+SCORE Temp path is 6
+New shortest path is 6
+testing combo ['v', '<'] from ['v', '<']
+Found good transition ['v', '<'] for ['v', '<']
+Looking at combo step v
+Looking at combo step <
+SCORE Temp path is 5
+New shortest path is 5
+New chain from A to v is 5
+Testing my combos for A to < : [['<', '<', 'v'], ['<', 'v', '<'], ['v', '<', '<']]
+testing combo ['<', '<', 'v'] from ['v', '<', '<']
+Bad transition from A to < from ['<', '<', 'v']
+Skipping bad transition ['<', '<', 'v'] for ['v', '<', '<']
+testing combo ['<', 'v', '<'] from ['v', '<', '<']
+Found good transition ['<', 'v', '<'] for ['v', '<', '<']
+Looking at combo step <
+Looking at combo step v
+Looking at combo step <
+SCORE Temp path is 8
+New shortest path is 8
+testing combo ['v', '<', '<'] from ['v', '<', '<']
+Found good transition ['v', '<', '<'] for ['v', '<', '<']
+Looking at combo step v
+Looking at combo step <
+Looking at combo step <
+SCORE Temp path is 6
+New shortest path is 6
+New chain from A to < is 6
+Testing my combos for A to > : [['v']]
+testing combo ['v'] from ['v']
+Found good transition ['v'] for ['v']
+Looking at combo step v
+SCORE Temp path is 3
+New shortest path is 3
+New chain from A to > is 3
+Testing my combos for ^ to A : [['>']]
+testing combo ['>'] from ['>']
+Found good transition ['>'] for ['>']
+Looking at combo step >
+SCORE Temp path is 2
+New shortest path is 2
+New chain from ^ to A is 2
+Testing my combos for ^ to ^ : [[]]
+testing combo [] from []
+Found good transition [] for []
+SCORE Temp path is 0
+New shortest path is 0
+New chain from ^ to ^ is 0
+Testing my combos for ^ to v : [['v']]
+testing combo ['v'] from ['v']
+Found good transition ['v'] for ['v']
+Looking at combo step v
+SCORE Temp path is 3
+New shortest path is 3
+New chain from ^ to v is 3
+Testing my combos for ^ to < : [['<', 'v'], ['v', '<']]
+testing combo ['<', 'v'] from ['v', '<']
+Bad transition from ^ to < from ['<', 'v']
+Skipping bad transition ['<', 'v'] for ['v', '<']
+testing combo ['v', '<'] from ['v', '<']
+Found good transition ['v', '<'] for ['v', '<']
+Looking at combo step v
+Looking at combo step <
+SCORE Temp path is 5
+New shortest path is 5
+New chain from ^ to < is 5
+Testing my combos for ^ to > : [['>', 'v'], ['v', '>']]
+testing combo ['>', 'v'] from ['>', 'v']
+Found good transition ['>', 'v'] for ['>', 'v']
+Looking at combo step >
+Looking at combo step v
+SCORE Temp path is 4
+New shortest path is 4
+testing combo ['v', '>'] from ['>', 'v']
+Found good transition ['v', '>'] for ['>', 'v']
+Looking at combo step v
+Looking at combo step >
+SCORE Temp path is 5
+New chain from ^ to > is 4
+Testing my combos for v to A : [['>', '^'], ['^', '>']]
+testing combo ['>', '^'] from ['^', '>']
+Found good transition ['>', '^'] for ['^', '>']
+Looking at combo step >
+Looking at combo step ^
+SCORE Temp path is 5
+New shortest path is 5
+testing combo ['^', '>'] from ['^', '>']
+Found good transition ['^', '>'] for ['^', '>']
+Looking at combo step ^
+Looking at combo step >
+SCORE Temp path is 5
+New chain from v to A is 5
+Testing my combos for v to ^ : [['^']]
+testing combo ['^'] from ['^']
+Found good transition ['^'] for ['^']
+Looking at combo step ^
+SCORE Temp path is 2
+New shortest path is 2
+New chain from v to ^ is 2
+Testing my combos for v to v : [[]]
+testing combo [] from []
+Found good transition [] for []
+SCORE Temp path is 0
+New shortest path is 0
+New chain from v to v is 0
+Testing my combos for v to < : [['<']]
+testing combo ['<'] from ['<']
+Found good transition ['<'] for ['<']
+Looking at combo step <
+SCORE Temp path is 4
+New shortest path is 4
+New chain from v to < is 4
+Testing my combos for v to > : [['>']]
+testing combo ['>'] from ['>']
+Found good transition ['>'] for ['>']
+Looking at combo step >
+SCORE Temp path is 2
+New shortest path is 2
+New chain from v to > is 2
+Testing my combos for < to A : [['>', '>', '^'], ['>', '^', '>'], ['^', '>', '>']]
+testing combo ['>', '>', '^'] from ['>', '>', '^']
+Found good transition ['>', '>', '^'] for ['>', '>', '^']
+Looking at combo step >
+Looking at combo step >
+Looking at combo step ^
+SCORE Temp path is 6
+New shortest path is 6
+testing combo ['>', '^', '>'] from ['>', '>', '^']
+Found good transition ['>', '^', '>'] for ['>', '>', '^']
+Looking at combo step >
+Looking at combo step ^
+Looking at combo step >
+SCORE Temp path is 8
+testing combo ['^', '>', '>'] from ['>', '>', '^']
+Bad transition from < to A from ['^', '>', '>']
+Skipping bad transition ['^', '>', '>'] for ['>', '>', '^']
+New chain from < to A is 6
+Testing my combos for < to ^ : [['>', '^'], ['^', '>']]
+testing combo ['>', '^'] from ['>', '^']
+Found good transition ['>', '^'] for ['>', '^']
+Looking at combo step >
+Looking at combo step ^
+SCORE Temp path is 5
+New shortest path is 5
+testing combo ['^', '>'] from ['>', '^']
+Bad transition from < to ^ from ['^', '>']
+Skipping bad transition ['^', '>'] for ['>', '^']
+New chain from < to ^ is 5
+Testing my combos for < to v : [['>']]
+testing combo ['>'] from ['>']
+Found good transition ['>'] for ['>']
+Looking at combo step >
+SCORE Temp path is 2
+New shortest path is 2
+New chain from < to v is 2
+Testing my combos for < to < : [[]]
+testing combo [] from []
+Found good transition [] for []
+SCORE Temp path is 0
+New shortest path is 0
+New chain from < to < is 0
+Testing my combos for < to > : [['>', '>']]
+testing combo ['>', '>'] from ['>', '>']
+Found good transition ['>', '>'] for ['>', '>']
+Looking at combo step >
+Looking at combo step >
+SCORE Temp path is 3
+New shortest path is 3
+New chain from < to > is 3
+Testing my combos for > to A : [['^']]
+testing combo ['^'] from ['^']
+Found good transition ['^'] for ['^']
+Looking at combo step ^
+SCORE Temp path is 2
+New shortest path is 2
+New chain from > to A is 2
+Testing my combos for > to ^ : [['<', '^'], ['^', '<']]
+testing combo ['<', '^'] from ['<', '^']
+Found good transition ['<', '^'] for ['<', '^']
+Looking at combo step <
+Looking at combo step ^
+SCORE Temp path is 7
+New shortest path is 7
+testing combo ['^', '<'] from ['<', '^']
+Found good transition ['^', '<'] for ['<', '^']
+Looking at combo step ^
+Looking at combo step <
+SCORE Temp path is 5
+New shortest path is 5
+New chain from > to ^ is 5
+Testing my combos for > to v : [['<']]
+testing combo ['<'] from ['<']
+Found good transition ['<'] for ['<']
+Looking at combo step <
+SCORE Temp path is 4
+New shortest path is 4
+New chain from > to v is 4
+Testing my combos for > to < : [['<', '<']]
+testing combo ['<', '<'] from ['<', '<']
+Found good transition ['<', '<'] for ['<', '<']
+Looking at combo step <
+Looking at combo step <
+SCORE Temp path is 5
+New shortest path is 5
+New chain from > to < is 5
+Testing my combos for > to > : [[]]
+testing combo [] from []
+Found good transition [] for []
+SCORE Temp path is 0
+New shortest path is 0
+New chain from > to > is 0
+Finished keypad 2 in 0:00:00.000348
+After keypad 2 command chains look like:
+('A', 'A'): 1
+('A', '^'): 8
+('A', 'v'): 9
+('A', '<'): 10
+('A', '>'): 6
+('^', 'A'): 4
+('^', '^'): 1
+('^', 'v'): 6
+('^', '<'): 9
+('^', '>'): 7
+('v', 'A'): 7
+('v', '^'): 4
+('v', 'v'): 1
+('v', '<'): 8
+('v', '>'): 4
+('<', 'A'): 8
+('<', '^'): 7
+('<', 'v'): 4
+('<', '<'): 1
+('<', '>'): 5
+('>', 'A'): 4
+('>', '^'): 9
+('>', 'v'): 8
+('>', '<'): 9
+('>', '>'): 1
+Current time: 2025-01-01 20:51:25 
+Looking at keypad 3:
+Testing my combos for A to A : [[]]
+testing combo [] from []
+Found good transition [] for []
+SCORE Temp path is 0
+New shortest path is 0
+New chain from A to A is 0
+Testing my combos for A to ^ : [['<']]
+testing combo ['<'] from ['<']
+Found good transition ['<'] for ['<']
+Looking at combo step <
+SCORE Temp path is 10
+New shortest path is 10
+New chain from A to ^ is 10
+Testing my combos for A to v : [['<', 'v'], ['v', '<']]
+testing combo ['<', 'v'] from ['v', '<']
+Found good transition ['<', 'v'] for ['v', '<']
+Looking at combo step <
+Looking at combo step v
+SCORE Temp path is 14
+New shortest path is 14
+testing combo ['v', '<'] from ['v', '<']
+Found good transition ['v', '<'] for ['v', '<']
+Looking at combo step v
+Looking at combo step <
+SCORE Temp path is 17
+New chain from A to v is 14
+Testing my combos for A to < : [['<', '<', 'v'], ['<', 'v', '<'], ['v', '<', '<']]
+testing combo ['<', '<', 'v'] from ['v', '<', '<']
+Bad transition from A to < from ['<', '<', 'v']
+Skipping bad transition ['<', '<', 'v'] for ['v', '<', '<']
+testing combo ['<', 'v', '<'] from ['v', '<', '<']
+Found good transition ['<', 'v', '<'] for ['v', '<', '<']
+Looking at combo step <
+Looking at combo step v
+Looking at combo step <
+SCORE Temp path is 22
+New shortest path is 22
+testing combo ['v', '<', '<'] from ['v', '<', '<']
+Found good transition ['v', '<', '<'] for ['v', '<', '<']
+Looking at combo step v
+Looking at combo step <
+Looking at combo step <
+SCORE Temp path is 18
+New shortest path is 18
+New chain from A to < is 18
+Testing my combos for A to > : [['v']]
+testing combo ['v'] from ['v']
+Found good transition ['v'] for ['v']
+Looking at combo step v
+SCORE Temp path is 9
+New shortest path is 9
+New chain from A to > is 9
+Testing my combos for ^ to A : [['>']]
+testing combo ['>'] from ['>']
+Found good transition ['>'] for ['>']
+Looking at combo step >
+SCORE Temp path is 6
+New shortest path is 6
+New chain from ^ to A is 6
+Testing my combos for ^ to ^ : [[]]
+testing combo [] from []
+Found good transition [] for []
+SCORE Temp path is 0
+New shortest path is 0
+New chain from ^ to ^ is 0
+Testing my combos for ^ to v : [['v']]
+testing combo ['v'] from ['v']
+Found good transition ['v'] for ['v']
+Looking at combo step v
+SCORE Temp path is 9
+New shortest path is 9
+New chain from ^ to v is 9
+Testing my combos for ^ to < : [['<', 'v'], ['v', '<']]
+testing combo ['<', 'v'] from ['v', '<']
+Bad transition from ^ to < from ['<', 'v']
+Skipping bad transition ['<', 'v'] for ['v', '<']
+testing combo ['v', '<'] from ['v', '<']
+Found good transition ['v', '<'] for ['v', '<']
+Looking at combo step v
+Looking at combo step <
+SCORE Temp path is 17
+New shortest path is 17
+New chain from ^ to < is 17
+Testing my combos for ^ to > : [['>', 'v'], ['v', '>']]
+testing combo ['>', 'v'] from ['>', 'v']
+Found good transition ['>', 'v'] for ['>', 'v']
+Looking at combo step >
+Looking at combo step v
+SCORE Temp path is 14
+New shortest path is 14
+testing combo ['v', '>'] from ['>', 'v']
+Found good transition ['v', '>'] for ['>', 'v']
+Looking at combo step v
+Looking at combo step >
+SCORE Temp path is 13
+New shortest path is 13
+New chain from ^ to > is 13
+Testing my combos for v to A : [['>', '^'], ['^', '>']]
+testing combo ['>', '^'] from ['^', '>']
+Found good transition ['>', '^'] for ['^', '>']
+Looking at combo step >
+Looking at combo step ^
+SCORE Temp path is 15
+New shortest path is 15
+testing combo ['^', '>'] from ['^', '>']
+Found good transition ['^', '>'] for ['^', '>']
+Looking at combo step ^
+Looking at combo step >
+SCORE Temp path is 15
+New chain from v to A is 15
+Testing my combos for v to ^ : [['^']]
+testing combo ['^'] from ['^']
+Found good transition ['^'] for ['^']
+Looking at combo step ^
+SCORE Temp path is 8
+New shortest path is 8
+New chain from v to ^ is 8
+Testing my combos for v to v : [[]]
+testing combo [] from []
+Found good transition [] for []
+SCORE Temp path is 0
+New shortest path is 0
+New chain from v to v is 0
+Testing my combos for v to < : [['<']]
+testing combo ['<'] from ['<']
+Found good transition ['<'] for ['<']
+Looking at combo step <
+SCORE Temp path is 10
+New shortest path is 10
+New chain from v to < is 10
+Testing my combos for v to > : [['>']]
+testing combo ['>'] from ['>']
+Found good transition ['>'] for ['>']
+Looking at combo step >
+SCORE Temp path is 6
+New shortest path is 6
+New chain from v to > is 6
+Testing my combos for < to A : [['>', '>', '^'], ['>', '^', '>'], ['^', '>', '>']]
+testing combo ['>', '>', '^'] from ['>', '>', '^']
+Found good transition ['>', '>', '^'] for ['>', '>', '^']
+Looking at combo step >
+Looking at combo step >
+Looking at combo step ^
+SCORE Temp path is 16
+New shortest path is 16
+testing combo ['>', '^', '>'] from ['>', '>', '^']
+Found good transition ['>', '^', '>'] for ['>', '>', '^']
+Looking at combo step >
+Looking at combo step ^
+Looking at combo step >
+SCORE Temp path is 22
+testing combo ['^', '>', '>'] from ['>', '>', '^']
+Bad transition from < to A from ['^', '>', '>']
+Skipping bad transition ['^', '>', '>'] for ['>', '>', '^']
+New chain from < to A is 16
+Testing my combos for < to ^ : [['>', '^'], ['^', '>']]
+testing combo ['>', '^'] from ['>', '^']
+Found good transition ['>', '^'] for ['>', '^']
+Looking at combo step >
+Looking at combo step ^
+SCORE Temp path is 15
+New shortest path is 15
+testing combo ['^', '>'] from ['>', '^']
+Bad transition from < to ^ from ['^', '>']
+Skipping bad transition ['^', '>'] for ['>', '^']
+New chain from < to ^ is 15
+Testing my combos for < to v : [['>']]
+testing combo ['>'] from ['>']
+Found good transition ['>'] for ['>']
+Looking at combo step >
+SCORE Temp path is 6
+New shortest path is 6
+New chain from < to v is 6
+Testing my combos for < to < : [[]]
+testing combo [] from []
+Found good transition [] for []
+SCORE Temp path is 0
+New shortest path is 0
+New chain from < to < is 0
+Testing my combos for < to > : [['>', '>']]
+testing combo ['>', '>'] from ['>', '>']
+Found good transition ['>', '>'] for ['>', '>']
+Looking at combo step >
+Looking at combo step >
+SCORE Temp path is 7
+New shortest path is 7
+New chain from < to > is 7
+Testing my combos for > to A : [['^']]
+testing combo ['^'] from ['^']
+Found good transition ['^'] for ['^']
+Looking at combo step ^
+SCORE Temp path is 8
+New shortest path is 8
+New chain from > to A is 8
+Testing my combos for > to ^ : [['<', '^'], ['^', '<']]
+testing combo ['<', '^'] from ['<', '^']
+Found good transition ['<', '^'] for ['<', '^']
+Looking at combo step <
+Looking at combo step ^
+SCORE Temp path is 17
+New shortest path is 17
+testing combo ['^', '<'] from ['<', '^']
+Found good transition ['^', '<'] for ['<', '^']
+Looking at combo step ^
+Looking at combo step <
+SCORE Temp path is 17
+New chain from > to ^ is 17
+Testing my combos for > to v : [['<']]
+testing combo ['<'] from ['<']
+Found good transition ['<'] for ['<']
+Looking at combo step <
+SCORE Temp path is 10
+New shortest path is 10
+New chain from > to v is 10
+Testing my combos for > to < : [['<', '<']]
+testing combo ['<', '<'] from ['<', '<']
+Found good transition ['<', '<'] for ['<', '<']
+Looking at combo step <
+Looking at combo step <
+SCORE Temp path is 11
+New shortest path is 11
+New chain from > to < is 11
+Testing my combos for > to > : [[]]
+testing combo [] from []
+Found good transition [] for []
+SCORE Temp path is 0
+New shortest path is 0
+New chain from > to > is 0
+Finished keypad 3 in 0:00:00.000292
+After keypad 3 command chains look like:
+('A', 'A'): 1
+('A', '^'): 18
+('A', 'v'): 21
+('A', '<'): 26
+('A', '>'): 16
+('^', 'A'): 10
+('^', '^'): 1
+('^', 'v'): 16
+('^', '<'): 25
+('^', '>'): 17
+('v', 'A'): 19
+('v', '^'): 12
+('v', 'v'): 1
+('v', '<'): 18
+('v', '>'): 10
+('<', 'A'): 20
+('<', '^'): 19
+('<', 'v'): 10
+('<', '<'): 1
+('<', '>'): 11
+('>', 'A'): 12
+('>', '^'): 21
+('>', 'v'): 18
+('>', '<'): 19
+('>', '>'): 1
+Current time: 2025-01-01 20:51:25 
+Looking at keypad 4:
+Testing my combos for A to A : [[]]
+testing combo [] from []
+Found good transition [] for []
+SCORE Temp path is 0
+New shortest path is 0
+New chain from A to A is 0
+Testing my combos for A to ^ : [['<']]
+testing combo ['<'] from ['<']
+Found good transition ['<'] for ['<']
+Looking at combo step <
+SCORE Temp path is 26
+New shortest path is 26
+New chain from A to ^ is 26
+Testing my combos for A to v : [['<', 'v'], ['v', '<']]
+testing combo ['<', 'v'] from ['v', '<']
+Found good transition ['<', 'v'] for ['v', '<']
+Looking at combo step <
+Looking at combo step v
+SCORE Temp path is 36
+New shortest path is 36
+testing combo ['v', '<'] from ['v', '<']
+Found good transition ['v', '<'] for ['v', '<']
+Looking at combo step v
+Looking at combo step <
+SCORE Temp path is 39
+New chain from A to v is 36
+Testing my combos for A to < : [['<', '<', 'v'], ['<', 'v', '<'], ['v', '<', '<']]
+testing combo ['<', '<', 'v'] from ['v', '<', '<']
+Bad transition from A to < from ['<', '<', 'v']
+Skipping bad transition ['<', '<', 'v'] for ['v', '<', '<']
+testing combo ['<', 'v', '<'] from ['v', '<', '<']
+Found good transition ['<', 'v', '<'] for ['v', '<', '<']
+Looking at combo step <
+Looking at combo step v
+Looking at combo step <
+SCORE Temp path is 54
+New shortest path is 54
+testing combo ['v', '<', '<'] from ['v', '<', '<']
+Found good transition ['v', '<', '<'] for ['v', '<', '<']
+Looking at combo step v
+Looking at combo step <
+Looking at combo step <
+SCORE Temp path is 40
+New shortest path is 40
+New chain from A to < is 40
+Testing my combos for A to > : [['v']]
+testing combo ['v'] from ['v']
+Found good transition ['v'] for ['v']
+Looking at combo step v
+SCORE Temp path is 21
+New shortest path is 21
+New chain from A to > is 21
+Testing my combos for ^ to A : [['>']]
+testing combo ['>'] from ['>']
+Found good transition ['>'] for ['>']
+Looking at combo step >
+SCORE Temp path is 16
+New shortest path is 16
+New chain from ^ to A is 16
+Testing my combos for ^ to ^ : [[]]
+testing combo [] from []
+Found good transition [] for []
+SCORE Temp path is 0
+New shortest path is 0
+New chain from ^ to ^ is 0
+Testing my combos for ^ to v : [['v']]
+testing combo ['v'] from ['v']
+Found good transition ['v'] for ['v']
+Looking at combo step v
+SCORE Temp path is 21
+New shortest path is 21
+New chain from ^ to v is 21
+Testing my combos for ^ to < : [['<', 'v'], ['v', '<']]
+testing combo ['<', 'v'] from ['v', '<']
+Bad transition from ^ to < from ['<', 'v']
+Skipping bad transition ['<', 'v'] for ['v', '<']
+testing combo ['v', '<'] from ['v', '<']
+Found good transition ['v', '<'] for ['v', '<']
+Looking at combo step v
+Looking at combo step <
+SCORE Temp path is 39
+New shortest path is 39
+New chain from ^ to < is 39
+Testing my combos for ^ to > : [['>', 'v'], ['v', '>']]
+testing combo ['>', 'v'] from ['>', 'v']
+Found good transition ['>', 'v'] for ['>', 'v']
+Looking at combo step >
+Looking at combo step v
+SCORE Temp path is 34
+New shortest path is 34
+testing combo ['v', '>'] from ['>', 'v']
+Found good transition ['v', '>'] for ['>', 'v']
+Looking at combo step v
+Looking at combo step >
+SCORE Temp path is 31
+New shortest path is 31
+New chain from ^ to > is 31
+Testing my combos for v to A : [['>', '^'], ['^', '>']]
+testing combo ['>', '^'] from ['^', '>']
+Found good transition ['>', '^'] for ['^', '>']
+Looking at combo step >
+Looking at combo step ^
+SCORE Temp path is 37
+New shortest path is 37
+testing combo ['^', '>'] from ['^', '>']
+Found good transition ['^', '>'] for ['^', '>']
+Looking at combo step ^
+Looking at combo step >
+SCORE Temp path is 35
+New shortest path is 35
+New chain from v to A is 35
+Testing my combos for v to ^ : [['^']]
+testing combo ['^'] from ['^']
+Found good transition ['^'] for ['^']
+Looking at combo step ^
+SCORE Temp path is 18
+New shortest path is 18
+New chain from v to ^ is 18
+Testing my combos for v to v : [[]]
+testing combo [] from []
+Found good transition [] for []
+SCORE Temp path is 0
+New shortest path is 0
+New chain from v to v is 0
+Testing my combos for v to < : [['<']]
+testing combo ['<'] from ['<']
+Found good transition ['<'] for ['<']
+Looking at combo step <
+SCORE Temp path is 26
+New shortest path is 26
+New chain from v to < is 26
+Testing my combos for v to > : [['>']]
+testing combo ['>'] from ['>']
+Found good transition ['>'] for ['>']
+Looking at combo step >
+SCORE Temp path is 16
+New shortest path is 16
+New chain from v to > is 16
+Testing my combos for < to A : [['>', '>', '^'], ['>', '^', '>'], ['^', '>', '>']]
+testing combo ['>', '>', '^'] from ['>', '>', '^']
+Found good transition ['>', '>', '^'] for ['>', '>', '^']
+Looking at combo step >
+Looking at combo step >
+Looking at combo step ^
+SCORE Temp path is 38
+New shortest path is 38
+testing combo ['>', '^', '>'] from ['>', '>', '^']
+Found good transition ['>', '^', '>'] for ['>', '>', '^']
+Looking at combo step >
+Looking at combo step ^
+Looking at combo step >
+SCORE Temp path is 54
+testing combo ['^', '>', '>'] from ['>', '>', '^']
+Bad transition from < to A from ['^', '>', '>']
+Skipping bad transition ['^', '>', '>'] for ['>', '>', '^']
+New chain from < to A is 38
+Testing my combos for < to ^ : [['>', '^'], ['^', '>']]
+testing combo ['>', '^'] from ['>', '^']
+Found good transition ['>', '^'] for ['>', '^']
+Looking at combo step >
+Looking at combo step ^
+SCORE Temp path is 37
+New shortest path is 37
+testing combo ['^', '>'] from ['>', '^']
+Bad transition from < to ^ from ['^', '>']
+Skipping bad transition ['^', '>'] for ['>', '^']
+New chain from < to ^ is 37
+Testing my combos for < to v : [['>']]
+testing combo ['>'] from ['>']
+Found good transition ['>'] for ['>']
+Looking at combo step >
+SCORE Temp path is 16
+New shortest path is 16
+New chain from < to v is 16
+Testing my combos for < to < : [[]]
+testing combo [] from []
+Found good transition [] for []
+SCORE Temp path is 0
+New shortest path is 0
+New chain from < to < is 0
+Testing my combos for < to > : [['>', '>']]
+testing combo ['>', '>'] from ['>', '>']
+Found good transition ['>', '>'] for ['>', '>']
+Looking at combo step >
+Looking at combo step >
+SCORE Temp path is 17
+New shortest path is 17
+New chain from < to > is 17
+Testing my combos for > to A : [['^']]
+testing combo ['^'] from ['^']
+Found good transition ['^'] for ['^']
+Looking at combo step ^
+SCORE Temp path is 18
+New shortest path is 18
+New chain from > to A is 18
+Testing my combos for > to ^ : [['<', '^'], ['^', '<']]
+testing combo ['<', '^'] from ['<', '^']
+Found good transition ['<', '^'] for ['<', '^']
+Looking at combo step <
+Looking at combo step ^
+SCORE Temp path is 45
+New shortest path is 45
+testing combo ['^', '<'] from ['<', '^']
+Found good transition ['^', '<'] for ['<', '^']
+Looking at combo step ^
+Looking at combo step <
+SCORE Temp path is 43
+New shortest path is 43
+New chain from > to ^ is 43
+Testing my combos for > to v : [['<']]
+testing combo ['<'] from ['<']
+Found good transition ['<'] for ['<']
+Looking at combo step <
+SCORE Temp path is 26
+New shortest path is 26
+New chain from > to v is 26
+Testing my combos for > to < : [['<', '<']]
+testing combo ['<', '<'] from ['<', '<']
+Found good transition ['<', '<'] for ['<', '<']
+Looking at combo step <
+Looking at combo step <
+SCORE Temp path is 27
+New shortest path is 27
+New chain from > to < is 27
+Testing my combos for > to > : [[]]
+testing combo [] from []
+Found good transition [] for []
+SCORE Temp path is 0
+New shortest path is 0
+New chain from > to > is 0
+Finished keypad 4 in 0:00:00.000275
+After keypad 4 command chains look like:
+('A', 'A'): 1
+('A', '^'): 46
+('A', 'v'): 55
+('A', '<'): 60
+('A', '>'): 40
+('^', 'A'): 28
+('^', '^'): 1
+('^', 'v'): 40
+('^', '<'): 59
+('^', '>'): 43
+('v', 'A'): 47
+('v', '^'): 28
+('v', 'v'): 1
+('v', '<'): 46
+('v', '>'): 28
+('<', 'A'): 48
+('<', '^'): 47
+('<', 'v'): 28
+('<', '<'): 1
+('<', '>'): 29
+('>', 'A'): 28
+('>', '^'): 63
+('>', 'v'): 46
+('>', '<'): 47
+('>', '>'): 1
+Current time: 2025-01-01 20:51:25 
+Looking at keypad 5:
+Testing my combos for A to A : [[]]
+testing combo [] from []
+Found good transition [] for []
+SCORE Temp path is 0
+New shortest path is 0
+New chain from A to A is 0
+Testing my combos for A to ^ : [['<']]
+testing combo ['<'] from ['<']
+Found good transition ['<'] for ['<']
+Looking at combo step <
+SCORE Temp path is 60
+New shortest path is 60
+New chain from A to ^ is 60
+Testing my combos for A to v : [['<', 'v'], ['v', '<']]
+testing combo ['<', 'v'] from ['v', '<']
+Found good transition ['<', 'v'] for ['v', '<']
+Looking at combo step <
+Looking at combo step v
+SCORE Temp path is 88
+New shortest path is 88
+testing combo ['v', '<'] from ['v', '<']
+Found good transition ['v', '<'] for ['v', '<']
+Looking at combo step v
+Looking at combo step <
+SCORE Temp path is 101
+New chain from A to v is 88
+Testing my combos for A to < : [['<', '<', 'v'], ['<', 'v', '<'], ['v', '<', '<']]
+testing combo ['<', '<', 'v'] from ['v', '<', '<']
+Bad transition from A to < from ['<', '<', 'v']
+Skipping bad transition ['<', '<', 'v'] for ['v', '<', '<']
+testing combo ['<', 'v', '<'] from ['v', '<', '<']
+Found good transition ['<', 'v', '<'] for ['v', '<', '<']
+Looking at combo step <
+Looking at combo step v
+Looking at combo step <
+SCORE Temp path is 134
+New shortest path is 134
+testing combo ['v', '<', '<'] from ['v', '<', '<']
+Found good transition ['v', '<', '<'] for ['v', '<', '<']
+Looking at combo step v
+Looking at combo step <
+Looking at combo step <
+SCORE Temp path is 102
+New shortest path is 102
+New chain from A to < is 102
+Testing my combos for A to > : [['v']]
+testing combo ['v'] from ['v']
+Found good transition ['v'] for ['v']
+Looking at combo step v
+SCORE Temp path is 55
+New shortest path is 55
+New chain from A to > is 55
+Testing my combos for ^ to A : [['>']]
+testing combo ['>'] from ['>']
+Found good transition ['>'] for ['>']
+Looking at combo step >
+SCORE Temp path is 40
+New shortest path is 40
+New chain from ^ to A is 40
+Testing my combos for ^ to ^ : [[]]
+testing combo [] from []
+Found good transition [] for []
+SCORE Temp path is 0
+New shortest path is 0
+New chain from ^ to ^ is 0
+Testing my combos for ^ to v : [['v']]
+testing combo ['v'] from ['v']
+Found good transition ['v'] for ['v']
+Looking at combo step v
+SCORE Temp path is 55
+New shortest path is 55
+New chain from ^ to v is 55
+Testing my combos for ^ to < : [['<', 'v'], ['v', '<']]
+testing combo ['<', 'v'] from ['v', '<']
+Bad transition from ^ to < from ['<', 'v']
+Skipping bad transition ['<', 'v'] for ['v', '<']
+testing combo ['v', '<'] from ['v', '<']
+Found good transition ['v', '<'] for ['v', '<']
+Looking at combo step v
+Looking at combo step <
+SCORE Temp path is 101
+New shortest path is 101
+New chain from ^ to < is 101
+Testing my combos for ^ to > : [['>', 'v'], ['v', '>']]
+testing combo ['>', 'v'] from ['>', 'v']
+Found good transition ['>', 'v'] for ['>', 'v']
+Looking at combo step >
+Looking at combo step v
+SCORE Temp path is 86
+New shortest path is 86
+testing combo ['v', '>'] from ['>', 'v']
+Found good transition ['v', '>'] for ['>', 'v']
+Looking at combo step v
+Looking at combo step >
+SCORE Temp path is 83
+New shortest path is 83
+New chain from ^ to > is 83
+Testing my combos for v to A : [['>', '^'], ['^', '>']]
+testing combo ['>', '^'] from ['^', '>']
+Found good transition ['>', '^'] for ['^', '>']
+Looking at combo step >
+Looking at combo step ^
+SCORE Temp path is 103
+New shortest path is 103
+testing combo ['^', '>'] from ['^', '>']
+Found good transition ['^', '>'] for ['^', '>']
+Looking at combo step ^
+Looking at combo step >
+SCORE Temp path is 89
+New shortest path is 89
+New chain from v to A is 89
+Testing my combos for v to ^ : [['^']]
+testing combo ['^'] from ['^']
+Found good transition ['^'] for ['^']
+Looking at combo step ^
+SCORE Temp path is 46
+New shortest path is 46
+New chain from v to ^ is 46
+Testing my combos for v to v : [[]]
+testing combo [] from []
+Found good transition [] for []
+SCORE Temp path is 0
+New shortest path is 0
+New chain from v to v is 0
+Testing my combos for v to < : [['<']]
+testing combo ['<'] from ['<']
+Found good transition ['<'] for ['<']
+Looking at combo step <
+SCORE Temp path is 60
+New shortest path is 60
+New chain from v to < is 60
+Testing my combos for v to > : [['>']]
+testing combo ['>'] from ['>']
+Found good transition ['>'] for ['>']
+Looking at combo step >
+SCORE Temp path is 40
+New shortest path is 40
+New chain from v to > is 40
+Testing my combos for < to A : [['>', '>', '^'], ['>', '^', '>'], ['^', '>', '>']]
+testing combo ['>', '>', '^'] from ['>', '>', '^']
+Found good transition ['>', '>', '^'] for ['>', '>', '^']
+Looking at combo step >
+Looking at combo step >
+Looking at combo step ^
+SCORE Temp path is 104
+New shortest path is 104
+testing combo ['>', '^', '>'] from ['>', '>', '^']
+Found good transition ['>', '^', '>'] for ['>', '>', '^']
+Looking at combo step >
+Looking at combo step ^
+Looking at combo step >
+SCORE Temp path is 146
+testing combo ['^', '>', '>'] from ['>', '>', '^']
+Bad transition from < to A from ['^', '>', '>']
+Skipping bad transition ['^', '>', '>'] for ['>', '>', '^']
+New chain from < to A is 104
+Testing my combos for < to ^ : [['>', '^'], ['^', '>']]
+testing combo ['>', '^'] from ['>', '^']
+Found good transition ['>', '^'] for ['>', '^']
+Looking at combo step >
+Looking at combo step ^
+SCORE Temp path is 103
+New shortest path is 103
+testing combo ['^', '>'] from ['>', '^']
+Bad transition from < to ^ from ['^', '>']
+Skipping bad transition ['^', '>'] for ['>', '^']
+New chain from < to ^ is 103
+Testing my combos for < to v : [['>']]
+testing combo ['>'] from ['>']
+Found good transition ['>'] for ['>']
+Looking at combo step >
+SCORE Temp path is 40
+New shortest path is 40
+New chain from < to v is 40
+Testing my combos for < to < : [[]]
+testing combo [] from []
+Found good transition [] for []
+SCORE Temp path is 0
+New shortest path is 0
+New chain from < to < is 0
+Testing my combos for < to > : [['>', '>']]
+testing combo ['>', '>'] from ['>', '>']
+Found good transition ['>', '>'] for ['>', '>']
+Looking at combo step >
+Looking at combo step >
+SCORE Temp path is 41
+New shortest path is 41
+New chain from < to > is 41
+Testing my combos for > to A : [['^']]
+testing combo ['^'] from ['^']
+Found good transition ['^'] for ['^']
+Looking at combo step ^
+SCORE Temp path is 46
+New shortest path is 46
+New chain from > to A is 46
+Testing my combos for > to ^ : [['<', '^'], ['^', '<']]
+testing combo ['<', '^'] from ['<', '^']
+Found good transition ['<', '^'] for ['<', '^']
+Looking at combo step <
+Looking at combo step ^
+SCORE Temp path is 107
+New shortest path is 107
+testing combo ['^', '<'] from ['<', '^']
+Found good transition ['^', '<'] for ['<', '^']
+Looking at combo step ^
+Looking at combo step <
+SCORE Temp path is 105
+New shortest path is 105
+New chain from > to ^ is 105
+Testing my combos for > to v : [['<']]
+testing combo ['<'] from ['<']
+Found good transition ['<'] for ['<']
+Looking at combo step <
+SCORE Temp path is 60
+New shortest path is 60
+New chain from > to v is 60
+Testing my combos for > to < : [['<', '<']]
+testing combo ['<', '<'] from ['<', '<']
+Found good transition ['<', '<'] for ['<', '<']
+Looking at combo step <
+Looking at combo step <
+SCORE Temp path is 61
+New shortest path is 61
+New chain from > to < is 61
+Testing my combos for > to > : [[]]
+testing combo [] from []
+Found good transition [] for []
+SCORE Temp path is 0
+New shortest path is 0
+New chain from > to > is 0
+Finished keypad 5 in 0:00:00.000271
+After keypad 5 command chains look like:
+('A', 'A'): 1
+('A', '^'): 108
+('A', 'v'): 135
+('A', '<'): 150
+('A', '>'): 102
+('^', 'A'): 68
+('^', '^'): 1
+('^', 'v'): 102
+('^', '<'): 149
+('^', '>'): 111
+('v', 'A'): 117
+('v', '^'): 74
+('v', 'v'): 1
+('v', '<'): 108
+('v', '>'): 68
+('<', 'A'): 132
+('<', '^'): 131
+('<', 'v'): 68
+('<', '<'): 1
+('<', '>'): 69
+('>', 'A'): 74
+('>', '^'): 153
+('>', 'v'): 108
+('>', '<'): 109
+('>', '>'): 1
+Current time: 2025-01-01 20:51:25 
+Looking at keypad 6:
+Testing my combos for A to A : [[]]
+testing combo [] from []
+Found good transition [] for []
+SCORE Temp path is 0
+New shortest path is 0
+New chain from A to A is 0
+Testing my combos for A to ^ : [['<']]
+testing combo ['<'] from ['<']
+Found good transition ['<'] for ['<']
+Looking at combo step <
+SCORE Temp path is 150
+New shortest path is 150
+New chain from A to ^ is 150
+Testing my combos for A to v : [['<', 'v'], ['v', '<']]
+testing combo ['<', 'v'] from ['v', '<']
+Found good transition ['<', 'v'] for ['v', '<']
+Looking at combo step <
+Looking at combo step v
+SCORE Temp path is 218
+New shortest path is 218
+testing combo ['v', '<'] from ['v', '<']
+Found good transition ['v', '<'] for ['v', '<']
+Looking at combo step v
+Looking at combo step <
+SCORE Temp path is 243
+New chain from A to v is 218
+Testing my combos for A to < : [['<', '<', 'v'], ['<', 'v', '<'], ['v', '<', '<']]
+testing combo ['<', '<', 'v'] from ['v', '<', '<']
+Bad transition from A to < from ['<', '<', 'v']
+Skipping bad transition ['<', '<', 'v'] for ['v', '<', '<']
+testing combo ['<', 'v', '<'] from ['v', '<', '<']
+Found good transition ['<', 'v', '<'] for ['v', '<', '<']
+Looking at combo step <
+Looking at combo step v
+Looking at combo step <
+SCORE Temp path is 326
+New shortest path is 326
+testing combo ['v', '<', '<'] from ['v', '<', '<']
+Found good transition ['v', '<', '<'] for ['v', '<', '<']
+Looking at combo step v
+Looking at combo step <
+Looking at combo step <
+SCORE Temp path is 244
+New shortest path is 244
+New chain from A to < is 244
+Testing my combos for A to > : [['v']]
+testing combo ['v'] from ['v']
+Found good transition ['v'] for ['v']
+Looking at combo step v
+SCORE Temp path is 135
+New shortest path is 135
+New chain from A to > is 135
+Testing my combos for ^ to A : [['>']]
+testing combo ['>'] from ['>']
+Found good transition ['>'] for ['>']
+Looking at combo step >
+SCORE Temp path is 102
+New shortest path is 102
+New chain from ^ to A is 102
+Testing my combos for ^ to ^ : [[]]
+testing combo [] from []
+Found good transition [] for []
+SCORE Temp path is 0
+New shortest path is 0
+New chain from ^ to ^ is 0
+Testing my combos for ^ to v : [['v']]
+testing combo ['v'] from ['v']
+Found good transition ['v'] for ['v']
+Looking at combo step v
+SCORE Temp path is 135
+New shortest path is 135
+New chain from ^ to v is 135
+Testing my combos for ^ to < : [['<', 'v'], ['v', '<']]
+testing combo ['<', 'v'] from ['v', '<']
+Bad transition from ^ to < from ['<', 'v']
+Skipping bad transition ['<', 'v'] for ['v', '<']
+testing combo ['v', '<'] from ['v', '<']
+Found good transition ['v', '<'] for ['v', '<']
+Looking at combo step v
+Looking at combo step <
+SCORE Temp path is 243
+New shortest path is 243
+New chain from ^ to < is 243
+Testing my combos for ^ to > : [['>', 'v'], ['v', '>']]
+testing combo ['>', 'v'] from ['>', 'v']
+Found good transition ['>', 'v'] for ['>', 'v']
+Looking at combo step >
+Looking at combo step v
+SCORE Temp path is 210
+New shortest path is 210
+testing combo ['v', '>'] from ['>', 'v']
+Found good transition ['v', '>'] for ['>', 'v']
+Looking at combo step v
+Looking at combo step >
+SCORE Temp path is 203
+New shortest path is 203
+New chain from ^ to > is 203
+Testing my combos for v to A : [['>', '^'], ['^', '>']]
+testing combo ['>', '^'] from ['^', '>']
+Found good transition ['>', '^'] for ['^', '>']
+Looking at combo step >
+Looking at combo step ^
+SCORE Temp path is 255
+New shortest path is 255
+testing combo ['^', '>'] from ['^', '>']
+Found good transition ['^', '>'] for ['^', '>']
+Looking at combo step ^
+Looking at combo step >
+SCORE Temp path is 219
+New shortest path is 219
+New chain from v to A is 219
+Testing my combos for v to ^ : [['^']]
+testing combo ['^'] from ['^']
+Found good transition ['^'] for ['^']
+Looking at combo step ^
+SCORE Temp path is 108
+New shortest path is 108
+New chain from v to ^ is 108
+Testing my combos for v to v : [[]]
+testing combo [] from []
+Found good transition [] for []
+SCORE Temp path is 0
+New shortest path is 0
+New chain from v to v is 0
+Testing my combos for v to < : [['<']]
+testing combo ['<'] from ['<']
+Found good transition ['<'] for ['<']
+Looking at combo step <
+SCORE Temp path is 150
+New shortest path is 150
+New chain from v to < is 150
+Testing my combos for v to > : [['>']]
+testing combo ['>'] from ['>']
+Found good transition ['>'] for ['>']
+Looking at combo step >
+SCORE Temp path is 102
+New shortest path is 102
+New chain from v to > is 102
+Testing my combos for < to A : [['>', '>', '^'], ['>', '^', '>'], ['^', '>', '>']]
+testing combo ['>', '>', '^'] from ['>', '>', '^']
+Found good transition ['>', '>', '^'] for ['>', '>', '^']
+Looking at combo step >
+Looking at combo step >
+Looking at combo step ^
+SCORE Temp path is 256
+New shortest path is 256
+testing combo ['>', '^', '>'] from ['>', '>', '^']
+Found good transition ['>', '^', '>'] for ['>', '>', '^']
+Looking at combo step >
+Looking at combo step ^
+Looking at combo step >
+SCORE Temp path is 366
+testing combo ['^', '>', '>'] from ['>', '>', '^']
+Bad transition from < to A from ['^', '>', '>']
+Skipping bad transition ['^', '>', '>'] for ['>', '>', '^']
+New chain from < to A is 256
+Testing my combos for < to ^ : [['>', '^'], ['^', '>']]
+testing combo ['>', '^'] from ['>', '^']
+Found good transition ['>', '^'] for ['>', '^']
+Looking at combo step >
+Looking at combo step ^
+SCORE Temp path is 255
+New shortest path is 255
+testing combo ['^', '>'] from ['>', '^']
+Bad transition from < to ^ from ['^', '>']
+Skipping bad transition ['^', '>'] for ['>', '^']
+New chain from < to ^ is 255
+Testing my combos for < to v : [['>']]
+testing combo ['>'] from ['>']
+Found good transition ['>'] for ['>']
+Looking at combo step >
+SCORE Temp path is 102
+New shortest path is 102
+New chain from < to v is 102
+Testing my combos for < to < : [[]]
+testing combo [] from []
+Found good transition [] for []
+SCORE Temp path is 0
+New shortest path is 0
+New chain from < to < is 0
+Testing my combos for < to > : [['>', '>']]
+testing combo ['>', '>'] from ['>', '>']
+Found good transition ['>', '>'] for ['>', '>']
+Looking at combo step >
+Looking at combo step >
+SCORE Temp path is 103
+New shortest path is 103
+New chain from < to > is 103
+Testing my combos for > to A : [['^']]
+testing combo ['^'] from ['^']
+Found good transition ['^'] for ['^']
+Looking at combo step ^
+SCORE Temp path is 108
+New shortest path is 108
+New chain from > to A is 108
+Testing my combos for > to ^ : [['<', '^'], ['^', '<']]
+testing combo ['<', '^'] from ['<', '^']
+Found good transition ['<', '^'] for ['<', '^']
+Looking at combo step <
+Looking at combo step ^
+SCORE Temp path is 281
+New shortest path is 281
+testing combo ['^', '<'] from ['<', '^']
+Found good transition ['^', '<'] for ['<', '^']
+Looking at combo step ^
+Looking at combo step <
+SCORE Temp path is 257
+New shortest path is 257
+New chain from > to ^ is 257
+Testing my combos for > to v : [['<']]
+testing combo ['<'] from ['<']
+Found good transition ['<'] for ['<']
+Looking at combo step <
+SCORE Temp path is 150
+New shortest path is 150
+New chain from > to v is 150
+Testing my combos for > to < : [['<', '<']]
+testing combo ['<', '<'] from ['<', '<']
+Found good transition ['<', '<'] for ['<', '<']
+Looking at combo step <
+Looking at combo step <
+SCORE Temp path is 151
+New shortest path is 151
+New chain from > to < is 151
+Testing my combos for > to > : [[]]
+testing combo [] from []
+Found good transition [] for []
+SCORE Temp path is 0
+New shortest path is 0
+New chain from > to > is 0
+Finished keypad 6 in 0:00:00.000270
+After keypad 6 command chains look like:
+('A', 'A'): 1
+('A', '^'): 282
+('A', 'v'): 335
+('A', '<'): 376
+('A', '>'): 252
+('^', 'A'): 176
+('^', '^'): 1
+('^', 'v'): 252
+('^', '<'): 375
+('^', '>'): 277
+('v', 'A'): 293
+('v', '^'): 176
+('v', 'v'): 1
+('v', '<'): 282
+('v', '>'): 176
+('<', 'A'): 324
+('<', '^'): 323
+('<', 'v'): 176
+('<', '<'): 1
+('<', '>'): 177
+('>', 'A'): 176
+('>', '^'): 389
+('>', 'v'): 282
+('>', '<'): 283
+('>', '>'): 1
+Final command set as of chain  6 :
+('A', 'A'): 1
+('A', '^'): 282
+('A', 'v'): 335
+('A', '<'): 376
+('A', '>'): 252
+('^', 'A'): 176
+('^', '^'): 1
+('^', 'v'): 252
+('^', '<'): 375
+('^', '>'): 277
+('v', 'A'): 293
+('v', '^'): 176
+('v', 'v'): 1
+('v', '<'): 282
+('v', '>'): 176
+('<', 'A'): 324
+('<', '^'): 323
+('<', 'v'): 176
+('<', '<'): 1
+('<', '>'): 177
+('>', 'A'): 176
+('>', '^'): 389
+('>', 'v'): 282
+('>', '<'): 283
+('>', '>'): 1
+===============
+Trying to move from A to 0
+Trying pattern ['<']
+Origin position: (2, 3)
+Pattern from  A to 0 is ['<']
+moving from A  to <
+after moving to < counter is now 376
+After all is done, final length is 700
