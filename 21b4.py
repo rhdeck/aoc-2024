@@ -1,8 +1,6 @@
 import sys
 import datetime
-import itertools
 from sympy.utilities.iterables import multiset_permutations
-
 
 small_keypad = [
     ['#', '^', 'A'],
@@ -24,21 +22,19 @@ small_keypad_results = {
     "A": (0, 0)
 }
 
+
 def get_value_from_large_keypad(position):
     return large_keypad[position[1]][position[0]]
 
 def test_keypad_path(origin_value, path, destination):
-    # get coordinates of the origin value form the large_keypad
-    # print("Origin value:", origin_value)
     origin_pos = None
     for y, row in enumerate(large_keypad):
-        # print(y, row)
         for x, value in enumerate(row):
-            # print(x, y, value)
             if value == origin_value:
                 origin_pos = (x, y)
                 break
     print("Origin position:", origin_pos)
+    print("Large keypad:", large_keypad)
     for move in path:
         if move == "^":
             origin_pos = (origin_pos[0], origin_pos[1] - 1)
@@ -56,9 +52,6 @@ def test_keypad_path(origin_value, path, destination):
         if temp_value == '#':
             return False
     return True
-    # print("Destination value:", destination)
-    # print("Origin position:", origin_pos)
-    # print("Destination position:", destination)
 
 def test_small_keypad_path(origin_value, path, destination):
     origin_pos = None
@@ -112,34 +105,6 @@ small_keypad_transitions_no_A = {
     ('A', 'A'): [],
     ('A', '^'): ['<']
 }
-
-# bad_small_keypad_transitions_no_A = {
-#     ('^', '>'): [],
-#     ('^', '<'): [['<', 'v']],
-#     ('^', 'v'): [],
-#     ('^', 'A'): [],
-#     ('^', '^'): [],
-#     ('v', '>'): [],
-#     ('v', '<'): [],
-#     ('v', 'v'): [],
-#     ('v', 'A'): [],
-#     ('v', '^'): [],
-#     ('<', '>'): [],
-#     ('<', '<'): [],
-#     ('<', 'v'): [],
-#     ('<', 'A'): [['^', '>', '>' ]],
-#     ('<', '^'): [['^', '>']],
-#     ('>', '>'): [],
-#     ('>', '<'): [],
-#     ('>', 'v'): [],
-#     ('>', 'A'): [],
-#     ('>', '^'): [],
-#     ('A', '>'): [],
-#     ('A', '<'): [['<', '<','v' ]],
-#     ('A', 'v'): [],
-#     ('A', 'A'): [],
-#     ('A', '^'): []
-# }
 
 large_keypad_transitions = {
     # From 0
@@ -286,16 +251,15 @@ large_keypad_transitions = {
 small_pad_controls = ['A', '^', 'v', '<', '>']
 large_pad_controls = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A']
 
-
-
 def make_chains_for_level(previous_chains = None, scoreMode = False):
+    old_chain_is_none = False
     if previous_chains is None:
+        old_chain_is_none = True
         previous_chains = {}
     new_chains = {}
     used_combos = {}
     for source in small_pad_controls:
         for target in small_pad_controls:
-            # print("Working on small pad control", source, "to", target)
             if scoreMode == True:
                 new_chains[(source, target)] = 0
             else:
@@ -307,7 +271,6 @@ def make_chains_for_level(previous_chains = None, scoreMode = False):
                 # print("Testing transition from", combo[0], "to", combo[1]
             combolist = list(combos)
             print("Testing my combos for", source, "to", target, ":", combolist)
-            # combolist = [small_keypad_transitions_no_A[(source, target)]]
 
             for combo in combolist:
                 print("testing combo", combo, "from",small_keypad_transitions_no_A[(source, target)] )  
@@ -327,21 +290,20 @@ def make_chains_for_level(previous_chains = None, scoreMode = False):
                 for step in combo:
                     print("Looking at combo step", step)
                     if scoreMode == True:
-                        # print("Lookging at ", (source, target), "new_chains value is", new_chains.get((source, target),0), "previous chains value is", previous_chains.get((previous, step), 1))
                         temp_path = temp_path + previous_chains.get((previous, step), 1)
                     else:
-                        # print("Lookging at ", (source, target), "new_chains value is", new_chains.get((source, target),0), "previous chains value is", previous_chains.get((previous, step), 1))
                         temp_path = temp_path + previous_chains.get((previous, step), [step])
-                    # print("Analyzed chain from", source, "to", target, "from step", step, ''.join(new_chains[(source, target)]))
                     previous = step
                 
                 if scoreMode == True:
+                    if old_chain_is_none == False: temp_path = temp_path + previous_chains.get((previous, "A"), 1)
                     print("SCORE Temp path is", temp_path)
                     if shortest_path == None or temp_path < shortest_path:
                         print("New shortest path is", temp_path)
                         shortest_path = temp_path
                         used_combos[(source, target)] = combo
                 else:
+                    if old_chain_is_none == False: temp_path = temp_path + previous_chains.get((previous, "A"), ['A'])
                     print("LIST Temp path is", ''.join(temp_path))
                     if shortest_path == None or len(temp_path) < len(shortest_path):
                         print("New shortest path is", ''.join(temp_path))
@@ -357,8 +319,6 @@ def make_chains_for_level(previous_chains = None, scoreMode = False):
                 print("New chain from", source, "to", target, "is", new_chains[(source, target)])
             else:
                 print("New chain from", source, "to", target, "is", len(new_chains[(source, target)]))
-            # new_chains[(source, target)] = new_chains.get((source, target), []) + ['A']
-            # new_chains[(source, target)] = temp_path
     return new_chains, used_combos
 
 def make_transition_chains(chain_length, scoreMode = False):
@@ -370,112 +330,48 @@ def make_transition_chains(chain_length, scoreMode = False):
         print(f"Current time: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S %Z')}")
         print(f"Looking at keypad {i+1}:")
         old_chain = saving_chain.copy() if saving_chain != None else None
-        # if saving_chain == None:
-        #     print("Saving chain is None")
-        # else:
-        #     print("Saving chain is not None")
-        #     for command in saving_chain:
-        #         if(scoreMode == True):
-        #             print(f"{command}: {saving_chain[command]}")
-        #         else:   
-        #             print(f"{command}: {''.join(saving_chain[command])}")
-        #     print("----------------------")
         previous_chain, used_combos = make_chains_for_level(saving_chain, scoreMode)
         saving_chain = previous_chain.copy()
-        # if saving_chain == None:
-        #     print("After: saving_chain is None")
-        # else:
-        #     print("After: saving_chain is not None")
-        #     for command in saving_chain:
-        #         if(scoreMode == True):
-        #             print(f"{command}: {saving_chain[command]}")
-        #         else:   
-        #             print(f"{command}: {''.join(saving_chain[command])}")
-        #     print("----------------------")
-        # print("Saving chain", i+1, "is:")
         for command in saving_chain:
-            # print(f"{command}: {''.join(saving_chain[command])}")
-            # saving_chain_value = saving_chain[command]
             if command not in used_combos: print("ERROR Og command is NOT found?", command, command in used_combos)
             og_command = used_combos[command] # if command in used_combos else small_keypad_transitions_no_A[command]
-            # print("Appending to chain from old_chains", command,"->", saving_chain_value)
             if saving_chain[command] == [] or saving_chain[command] == 0:
                 if scoreMode == True:
                     saving_chain[command] = saving_chain[command]  + 1
                 else:
                     saving_chain[command] = saving_chain[command]  + ['A']
-                # saving_chain[command] = saving_chain[command]  + (old_chain.get((saving_chain_value[-2], 'A')) if old_chain != None else ['A'])
                 pass
             else:
                 if old_chain == None:
-                    # print("old_chain is None, just appending an A", command, saving_chain[command])
+
                     if scoreMode == True:
                         saving_chain[command] = saving_chain[command]  + 1
                     else:
                         saving_chain[command] = saving_chain[command]  + ['A']
-                    # print("old_chain is None, just appended an A", command, saving_chain[command])
-                else:
-                    # print("old_chain is not None, appending back_to_a", ''.join(old_chain.get((saving_chain_value[-2], 'A'))))
-                    # if saving_chain_value[-2] == 'A':
-                    #     print("position -3")
-                    # print("og_command", command, og_command)
-                    if len(og_command) > 0:
-                        tail_command =  og_command[-1]
-                        back_to_a = old_chain.get((tail_command, 'A'))
-                    else:
-                        print("No tail command found, using A", command, og_command)
-                        if scoreMode == True:
-                            back_to_a = 1
-                        else:
-                            back_to_a = ['A']
-                        continue
-                    
-                    # else:
-                    #     tail_command =  saving_chain_value[-2]
-                    #     print("position -2")
-                    #     back_to_a = old_chain.get((tail_command, 'A'))
-                    # print("based on tail command of ", tail_command, "adding back_to_a", ''.join(back_to_a),  "to", ''.join(saving_chain_value), "to get", ''.join(saving_chain[command]))
-                    saving_chain[command] = saving_chain[command]  + back_to_a
+
                 # else:
-                #     saving_chain[command] = saving_chain[command]  + old_chain.get((saving_chain_value[-2], 'A'))
-            # print("Updated saving chain", i+1, command, "from:", ''.join(saving_chain_value), "to:", ''.join(saving_chain[command]))
+
+                #     if len(og_command) > 0:
+                #         tail_command =  og_command[-1]
+                #         back_to_a = old_chain.get((tail_command, 'A'))
+                #     else:
+                #         print("No tail command found - this should never happen, aborting", command, og_command)
+                #         exit(1)
+                #     saving_chain[command] = saving_chain[command]  + back_to_a
         chains.append(saving_chain)
 
         end = datetime.datetime.now()
         print(f"Finished keypad {i+1} in {end-start}")
-        # for i in range(len(chains)):
         print("After keypad", i+1, "command chains look like:")
         for command in chains[i]:
             if(scoreMode == True):
                 print(f"{command}: {chains[i][command]}")
             else:
                 print(f"{command}: {len(chains[i][command])}")
-                # print(f"{command}: {len(chains[i][command])} {''.join(chains[i][command])} ")
-    # print("Before the last keypad, chains look like:")
-    # for command in previous_chain:
-    #     print(f"{command}: {''.join(previous_chain[command])} ")
     return saving_chain
 
-if __name__ == "__main__":
-    if(len(sys.argv) < 4):
-        print("Usage: python 21b.py <chain_length> <test_sequence> <scoremode>")    
-        print("Example: python 21b.py 4 1 1")
-        sys.exit(1)
-    chain_length = int(sys.argv[1])
-    test_sequence = sys.argv[2]
-    scoreMode = True if int(sys.argv[3]) > 0 else False
-    # test4(chain_length, test_sequence)
-    saving_chain = make_transition_chains(chain_length, scoreMode)
-    print("Final command set as of chain ", chain_length, ":")
-    for command in saving_chain:
-        if(scoreMode == True):
-            print(f"{command}: {saving_chain[command]}")
-        else:
-            print(f"{command}: {len(saving_chain[command])}  ")
 
-
-
-    print("===============")
+def evaluate_sequence(test_sequence, saving_chain, scoreMode = False):
     sequence = test_sequence
     if scoreMode == False:
         counter = []
@@ -507,18 +403,15 @@ if __name__ == "__main__":
                     print("after moving to", j, "counter is now", len(tempcounter), ''.join(tempcounter))
                 else:
                     print("after moving to", j, "counter is now", tempcounter)
-                # controls_lists[('A', j)].append(j)
                 sub_previous = j
            
             tempcounter = tempcounter + saving_chain[(sub_previous, 'A')]
-            # print("after moving to A, counter is now", tempcounter, "from pattern", pattern)
             if scoreMode == True:
                 if mincounter == None or tempcounter < mincounter:
                     mincounter = tempcounter
             else:
                 if mincounter == None or len(tempcounter) < len(mincounter):
                     mincounter = tempcounter
-        # print("Done with looking at my patterns for", previous, "to", i, mincounter)
         if(mincounter == None):
             print("No valid patterns found for", previous, "to", i)
             break
@@ -528,26 +421,56 @@ if __name__ == "__main__":
             counter = mincounter
        
         previous = i
+    print('===============')
     if scoreMode == False:
         print("After all is done, final length is", len(counter) ,":",  ''.join(counter))
     else:
         print("After all is done, final length is", counter)
-            # print(f"{command}: {len(saving_chain[command])} - {''.join(saving_chain[command])} ")
-        # print(f"{command}: {saving_chain[command]} ")
-    # previous = 'A'
-    # for item in test_sequence:
-    #     print(item)
-    #     needed_commands = large_keypad_transitions[(previous, item)]
-    #     print(f"Commands needed to get from {previous} to {item}: {needed_commands}")
-    #     for command in needed_commands:
+    
+    return counter
 
-    #         command_string.extend(command_chains[command])
-    #         total += command_caches[command]
-    #     back_to_a = small_keypad_transitions_no_A[(needed_commands[-1], 'A')]
-    #     for command in back_to_a:
-          
+def extract_digits(s: str) -> int:
+    digits = ''.join(c for c in s if c.isdigit())
+    return int(digits) if digits else 0
 
+if __name__ == "__main__":
+    if(len(sys.argv) < 4):
+        print("Usage: python 21b.py <chain_length> <test_sequence> <scoremode>")    
+        print("Example: python 21b.py 4 1 1")
+        sys.exit(1)
+    chain_length = int(sys.argv[1])
+    test_sequence = sys.argv[2] 
+    scoreMode = True if int(sys.argv[3]) > 0 else False
+    saving_chain = make_transition_chains(chain_length, scoreMode)
+    print("Final command set as of chain ", chain_length, ":")
+    for command in saving_chain:
+        if(scoreMode == True):
+            print(f"{command}: {saving_chain[command]}")
+        else:
+            print(f"{command}: {len(saving_chain[command])}  ")
 
+    print("===============")
 
-    # A>Av<<A>A^>AAvA^<A>A
-    # v<<A>^>AvA^Av<A<AA>^>AvA^<A>AAvA^Av<<A>A^>AvA^A<A>Av<<A>A^>AAvA^<A>A
+    if(test_sequence != "X"):
+        print("Evaluating single sequence '", test_sequence, "'")
+        l = evaluate_sequence(test_sequence, saving_chain, scoreMode)
+        if scoreMode == False:
+            print("Sequence:", ''.join(l))
+            l = len(l)
+        digits = extract_digits(test_sequence)
+        print("Score for sequence", test_sequence, "is", l, " * ", digits, " = ", l * digits)
+    else:
+        total = 0
+        with open("21.txt") as f:
+            commands = f.read().strip().split('\n')
+        for i, seq in enumerate(commands, 1):
+            print("Evaluating sequence", seq)
+            l = evaluate_sequence(seq, saving_chain, scoreMode)
+            if scoreMode == False:
+                print("Sequence:", ''.join(l))
+                l = len(l)
+            digits = extract_digits(seq)
+            score = l * digits
+            total += score
+            print("Score for sequence", seq, "is", l, " * ", digits, " = ", score)
+        print("Total score is", total)

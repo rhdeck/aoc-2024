@@ -382,6 +382,8 @@ def interactive_simulator(chain_length=2, instructions=None):
     if instructions is not None : instructions = deque(instructions)
     pressed_commands = []
     def main(stdscr):
+        sleepdelay = max(0.0001, 5/instruction_length)
+        fonz = 0
         # Set up curses
         curses.curs_set(0)  # Hide cursor
         stdscr.clear()
@@ -412,12 +414,15 @@ def interactive_simulator(chain_length=2, instructions=None):
             # Show pressed keys
             stdscr.addstr(i+2, 0, f"Pressed keys: {' '.join(pressed_keys)}")
             stdscr.addstr(i+3, 0, "Use arrow keys to move, 'a' to press, 'q' to quit")
-            stdscr.addstr(i+4, 0, f"Pressed commands: {''.join(pressed_commands[-120:])} ({len(pressed_commands)})")
+            stdscr.addstr(i+4, 0, f"Pressed commands: {''.join(pressed_commands[-120:])} \n({len(pressed_commands)}) (A: {fonz})")
             interactive_mode = False
             # Get input
             if instructions is not None and len(instructions) > 0:
                 # time.sleep(0.2)
                 cmd = instructions.popleft()
+                if cmd not in ['^', 'v', '<', '>', 'A']:
+                    time.sleep(1.0)
+                    sleepdelay = 1.0
             else:
                 interactive_mode = True
                 while True:
@@ -428,6 +433,8 @@ def interactive_simulator(chain_length=2, instructions=None):
                         cmd = key_map[key]
                         break
             current_cmd = cmd
+            if cmd == 'A':
+                fonz += 1
             pressed_commands.append(current_cmd)
             temp_positions = robot_positions.copy()
             temp_large_pos = large_robot_pos
@@ -468,7 +475,7 @@ def interactive_simulator(chain_length=2, instructions=None):
             if interactive_mode: time.sleep(0.1)  # Small delay to make visualization smoother
             else: 
                 stdscr.refresh()
-                time.sleep(max(0.02, 5/instruction_length))
+                time.sleep(sleepdelay)
     curses.wrapper(main)
 
 def find_path_to_single_key(start_state, target_key, transition_table):
